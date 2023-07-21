@@ -1,21 +1,17 @@
-import whiteCircleLogo from '../.././images/whiteCircleLogo.png'
-import './App.css'
+import './App.css';
+import Navbar from '../Navbar/Navbar';
+import HomeView from '../HomeView/HomeView';
+import { Routes, Route } from 'react-router-dom';
+import SelectTaskView from '../SelectTaskView/SelectTaskView';
+
 const App = () => {
   return (
     <>
-      <div className="logo">
-        <div className='image-container'>
-          <div className='logo-image-halo'>
-            <img src={whiteCircleLogo}></img>
-          </div>
-        </div>
-        <h1>Bare Minimum</h1>
-      </div>
-      <div className='intro-text-container'>
-        <p className='intro-text'>
-          "Featherweight tasks for you to embrace the balance between self-care and productivity"
-        </p>
-      </div>
+      <Navbar />
+      <Routes>
+        {/* <Route path='/:id' element={<SelectTaskView />} />
+        <Route path='/' element={<HomeView />} /> */}
+      </Routes>
     </>
   )
 }
