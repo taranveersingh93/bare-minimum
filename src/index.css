@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  background: linear-gradient(45deg, hsla(240,75%,75%,.6), hsla(292, 75%, 75%, 0.4),#422bd453, #B3AAEE, rgba(44, 109, 183, 0.509)
+  );
+  background-size: 400% 100%;
+  min-height: 100%;
+  animation: background-animation 20s ease-in-out infinite;
+}
+
+@keyframes background-animation {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
