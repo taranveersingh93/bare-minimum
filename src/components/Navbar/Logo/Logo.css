@@ -17,30 +17,8 @@
   width: 180px;
 }
 
-@keyframes breathe {
-  0% {
-    text-shadow: none;
-  }
-  20% {
-    text-shadow: none;
-  }
-  50% {
-    text-shadow:
-    0.5px -0.5px 0 rgb(40, 34, 108),
-    -0.5px 0.5px 0 rgb(40, 34, 108),
-    -0.5px -0.5px 0 rgb(40, 34, 108),
-    0.5px 0.5px 0 rgb(40, 34, 108);
-  }
-  80% {
-    text-shadow: none;
-  }
-  100% {
-    text-shadow: none;
-  }
-}
-
 .image-container {
-  width: 140px;
+  width: 115px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,6 +53,28 @@
   100% {
     width: 100px;
     height: 100px;
+  }
+}
+
+@keyframes breathe {
+  0% {
+    text-shadow: none;
+  }
+  20% {
+    text-shadow: none;
+  }
+  50% {
+    text-shadow:
+    0.5px -0.5px 0 rgb(40, 34, 108),
+    -0.5px 0.5px 0 rgb(40, 34, 108),
+    -0.5px -0.5px 0 rgb(40, 34, 108),
+    0.5px 0.5px 0 rgb(40, 34, 108);
+  }
+  80% {
+    text-shadow: none;
+  }
+  100% {
+    text-shadow: none;
   }
 }
 

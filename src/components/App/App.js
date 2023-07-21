@@ -9,8 +9,8 @@ const App = () => {
     <>
       <Navbar />
       <Routes>
-        {/* <Route path='/:id' element={<SelectTaskView />} />
-        <Route path='/' element={<HomeView />} /> */}
+        <Route path='/:id' element={<SelectTaskView />} />
+        <Route path='/' element={<HomeView />} />
       </Routes>
     </>
   )
