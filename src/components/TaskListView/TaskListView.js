@@ -1,25 +1,40 @@
+import './TaskListView.css'
+import { useState } from 'react'
 
 
-function TaskListView(props) {
-  let filterSaved = props.savedData.map((saved) => {
+const TaskListView = (props) => {
+
+    const [complete, setComplete] = useState(false)
+
+    const handleChange = () => {
+        console.log(complete)
+        setComplete(!complete)
+    }
+
+  let filterSaved = props.savedData.map((saved, index) => {
     return (
-      <tr>
+      <tr className={complete ? 'done' : ''} key={`row-${index}`}>
         <td>{saved.category}</td>
         <td>{saved.task}</td>
-        <td><input type="checkbox" /></td>
+        <td><button onChange={handleChange} className='check-task'/></td>
         <td>🗑</td>
       </tr>
     )
   })
+
   return (
     <table>
-      <tr>
-        <th>Category</th>
-        <th>Task</th>
-        <th>Complete?</th>
-        <th>Delete</th>
-      </tr>
-      {filterSaved}
+      <thead>
+        <tr>
+            <th>Category</th>
+            <th>Task</th>
+            <th>Complete?</th>
+            <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filterSaved}
+      </tbody>
     </table>
   )
 }

@@ -10,17 +10,17 @@ let savedData = [
     task: 'Do a 10 second wall sit'
   },
   {
-    id:3,
+    id: 3,
     category: 'Exercise',
     task: 'Put on music and dance for half of a song'
   },
   {
-    id:3,
+    id: 4,
     category: 'Cleaning',
     task: 'Organize sock drawer'
   },
   {
-    id:3,
+    id: 5,
     category: 'Health',
     task: 'Brush your teeth'
   }
