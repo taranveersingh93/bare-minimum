@@ -3,17 +3,24 @@
 function TaskListView(props) {
   let filterSaved = props.savedData.map((saved) => {
     return (
-      <section>
-        <p>{saved.category}, {saved.task}</p>
-      </section>
+      <tr>
+        <td>{saved.category}</td>
+        <td>{saved.task}</td>
+        <td><input type="checkbox" /></td>
+        <td>🗑</td>
+      </tr>
     )
   })
-
   return (
-    <div>
-      <h1>Tasks</h1>
+    <table>
+      <tr>
+        <th>Category</th>
+        <th>Task</th>
+        <th>Complete?</th>
+        <th>Delete</th>
+      </tr>
       {filterSaved}
-    </div>
+    </table>
   )
 }
 
