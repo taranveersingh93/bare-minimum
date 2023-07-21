@@ -14,3 +14,8 @@
   font-size: 1.5rem;
 }
 
+@media (max-width: 1000px) {
+  .intro-text-container {
+    width: 80%;
+  }
+}
