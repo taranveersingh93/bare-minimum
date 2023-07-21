@@ -6,7 +6,7 @@ import TableRow from '../TableRow/TableRow'
 const TaskListView = (props) => {
 
   const task = props.savedData.map((saved, index) => {
-    return (<TableRow saved={saved} index={index}/>)
+    return (<TableRow saved={saved} key={`row-${index}`}/>)
   })
 
   return (
