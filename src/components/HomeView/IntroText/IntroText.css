@@ -1,6 +1,4 @@
 .intro-text-container {
-  margin-left: 50%;
-  transform: translateX(-50%);
   width: 40%;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 12px;
@@ -15,3 +13,4 @@
   font-family: 'kalam', cursive;
   font-size: 1.5rem;
 }
+

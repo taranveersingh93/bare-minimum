@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;500;700');
 
 .main-view {
-  height: 80vh;
+  max-height: 70vh;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
