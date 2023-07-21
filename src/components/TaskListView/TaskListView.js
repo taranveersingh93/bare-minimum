@@ -1,39 +1,26 @@
 import './TaskListView.css'
 import { useState } from 'react'
+import TableRow from '../TableRow/TableRow'
 
 
 const TaskListView = (props) => {
 
-    const [complete, setComplete] = useState(false)
-
-    const handleChange = () => {
-        console.log(complete)
-        setComplete(!complete)
-    }
-
-  let filterSaved = props.savedData.map((saved, index) => {
-    return (
-      <tr className={complete ? 'done' : ''} key={`row-${index}`}>
-        <td>{saved.category}</td>
-        <td>{saved.task}</td>
-        <td><button onChange={handleChange} className='check-task'/></td>
-        <td>🗑</td>
-      </tr>
-    )
+  const task = props.savedData.map((saved, index) => {
+    return (<TableRow saved={saved} index={index}/>)
   })
 
   return (
     <table>
       <thead>
         <tr>
-            <th>Category</th>
-            <th>Task</th>
-            <th>Complete?</th>
-            <th>Delete</th>
+          <th>Category</th>
+          <th>Task</th>
+          <th>Complete?</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
-        {filterSaved}
+        {task}
       </tbody>
     </table>
   )
