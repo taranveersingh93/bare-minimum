@@ -1,4 +1,4 @@
-import whiteCircleLogo from '.././images/whiteCircleLogo.png'
+import whiteCircleLogo from '../.././images/whiteCircleLogo.png'
 import './App.css'
 const App = () => {
   return (
