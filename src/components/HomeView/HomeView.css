@@ -7,17 +7,17 @@
 }
 
 .categories {
+  width: 100%;
   padding: 5vh;
   display: grid;
   grid-gap: 2em;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));  
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));  
 }
 
 .category {
-  height: 12vw;
-  width: 12vw;
-  min-height: 150px;
-  min-width: 150px;
+  
+  min-height: 200px;
+  min-width: 200px;
   background-color: white;
   margin-bottom: 12px;
 }
