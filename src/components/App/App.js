@@ -4,6 +4,7 @@ import HomeView from '../HomeView/HomeView';
 import { Routes, Route } from 'react-router-dom';
 import SelectTaskView from '../SelectTaskView/SelectTaskView';
 import TaskListView from '../TaskListView/TaskListView'
+import savedData from '../../dataList/savedData'
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         <Routes>
           <Route path='/:id' element={<SelectTaskView />} />
           <Route path='/' element={<HomeView />} />
-          <Route path='/tasklist' element={<TaskListView />} />
+          <Route path='/tasklist' element={<TaskListView savedData={savedData}/>} />
         </Routes>
       </div>
     </>

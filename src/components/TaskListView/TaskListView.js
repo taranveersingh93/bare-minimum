@@ -1,7 +1,19 @@
 
-function TaskListView() {
+
+function TaskListView(props) {
+  let filterSaved = props.savedData.map((saved) => {
+    return (
+      <section>
+        <p>{saved.category}, {saved.task}</p>
+      </section>
+    )
+  })
+
   return (
-    <h1>Hello</h1>
+    <div>
+      <h1>Tasks</h1>
+      {filterSaved}
+    </div>
   )
 }
 
