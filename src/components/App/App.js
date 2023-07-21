@@ -8,12 +8,12 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <main>
+      <div className='main-view'>
         <Routes>
           <Route path='/:id' element={<SelectTaskView />} />
           <Route path='/' element={<HomeView />} />
         </Routes>
-      </main>
+      </div>
     </>
   )
 }

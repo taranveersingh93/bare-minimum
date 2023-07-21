@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;500;700');
 
-.App {
-  text-align: center;
-  height: 100%;
-  width: 100%;
+.main-view {
+  height: 80vh;
 }
