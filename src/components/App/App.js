@@ -8,10 +8,12 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path='/:id' element={<SelectTaskView />} />
-        <Route path='/' element={<HomeView />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path='/:id' element={<SelectTaskView />} />
+          <Route path='/' element={<HomeView />} />
+        </Routes>
+      </main>
     </>
   )
 }

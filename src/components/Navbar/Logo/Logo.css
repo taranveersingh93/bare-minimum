@@ -2,7 +2,7 @@
   color: rgb(40, 34, 108);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   min-width: 360px;
   min-height: 120px;
 }
@@ -84,6 +84,6 @@
     justify-content: center;
     align-items: flex-start;
     max-width: 50%;
-    width: 50%;
+    width: 35%;
   }
 }
