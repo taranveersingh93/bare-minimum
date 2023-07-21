@@ -1,0 +1,21 @@
+.intro-text-container {
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.intro-text {
+  text-align: center;
+  width: 80%;
+  color: rgb(40, 34, 108);
+  font-family: 'kalam', cursive;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 1000px) {
+  .intro-text-container {
+    width: 80%;
+  }
+}

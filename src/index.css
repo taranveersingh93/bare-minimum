@@ -5,9 +5,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+html {
+  background: linear-gradient(70deg,rgba(71, 144, 165, 0.3), hsla(240,75%,75%,.6), hsla(292, 75%, 75%, 0.4),#422bd453, #7564e39a, rgba(230, 147, 251, 0.509));
+  background-size: 400% 400%;
+  animation: background-animation 20s ease-in-out infinite;
+}
+
+@keyframes background-animation {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
 }
