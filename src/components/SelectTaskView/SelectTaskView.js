@@ -2,6 +2,8 @@ import tasks from '../../data/data';
 import './SelectTaskView.css'
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import savedData from '../../dataList/savedData';
+
 
 const SelectTaskView = () => {
   const { category } = useParams();
@@ -66,7 +68,14 @@ const SelectTaskView = () => {
     checkForReset();
   };
 
-  const postTask = () => {}
+  const postTask = () => {
+    savedData.push(currentTask)
+    const allTasks = [...currentTasks];
+    allTasks.find((task) => task.id === currentTask.id).seen = true;
+
+    setCurrentTasks(allTasks);
+    checkForReset();
+  }
 
   // useEffect(() => {
   //   console.log('currentTasks', currentTasks);
