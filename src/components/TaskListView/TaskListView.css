@@ -3,12 +3,17 @@
 }
 
 .check-task {
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
+    background-color: transparent;
+    background-image: url('empty-check.png');
+    border: none;
 }
 
 .checked {
-    background-color: #8171ef;
+    background-color: transparent;
+    background-image: url('check-mark.png');
+    border: none;
 }
 
 .bin {
