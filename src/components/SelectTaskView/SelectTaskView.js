@@ -1,9 +1,9 @@
 import tasks from '../../data/data';
-import './SelectTaskView.css'
+import './SelectTaskView.css';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import savedData from '../../dataList/savedData';
-
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 const SelectTaskView = () => {
   const { category } = useParams();
@@ -11,6 +11,7 @@ const SelectTaskView = () => {
   const [currentTasks, setCurrentTasks] = useState([]);
   const [unseenTasks, setUnseenTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState('');
+  const [tasksToShow, setTasksToShow] = useState(false);
 
   const fetchTasks = (cat) => {
     if (cat !== 'all') {
@@ -30,10 +31,18 @@ const SelectTaskView = () => {
 
   const getUnseenTasks = (tasks) => {
     const filteredTasks = tasks.filter((task) => {
-      return !task.seen;
+      return !task.seen && !task.saved;
     });
     setUnseenTasks(filteredTasks);
   };
+
+  useEffect(() => {
+    if (unseenTasks.length) {
+      setTasksToShow(true)
+    } else {
+      setTasksToShow(false)
+    }
+  }, [unseenTasks])
 
   useEffect(() => {
     getUnseenTasks(currentTasks);
@@ -45,7 +54,9 @@ const SelectTaskView = () => {
   };
 
   useEffect(() => {
-    if (unseenTasks.length) {
+    if (!unseenTasks.length) {
+      
+    } else {
       getCurrentTask(unseenTasks);
     }
   }, [unseenTasks]);
@@ -69,21 +80,26 @@ const SelectTaskView = () => {
   };
 
   const postTask = () => {
-    savedData.push(currentTask)
+    const acceptedTask = {
+      id: currentTask.id,
+      category: currentTask.category,
+      task: currentTask.task,
+    };
+    if (!savedData.find((task) => task.id === acceptedTask.id)) {
+      savedData.push(acceptedTask);
+    }
     const allTasks = [...currentTasks];
     allTasks.find((task) => task.id === currentTask.id).seen = true;
+    allTasks.find((task) => task.id === currentTask.id).saved = true;
 
     setCurrentTasks(allTasks);
     checkForReset();
-  }
+  };
 
-  // useEffect(() => {
-  //   console.log('currentTasks', currentTasks);
-  // }, [currentTasks])
-
-  // useEffect(() => {
-  //   console.log('unseenTasks', unseenTasks);
-  // }, [unseenTasks])
+  useEffect(() => {
+    console.log('savedData', savedData);
+    console.log('unseenTasks', unseenTasks);
+  }, [unseenTasks]);
 
   // useEffect(() => {
   //   console.log('currentTask', currentTask)
@@ -92,13 +108,16 @@ const SelectTaskView = () => {
   return (
     <div className="new-task-page">
       <div className="task-card">
-        <p className="task-text">{currentTask.task}</p>
-        <div className="task-card-buttons">
+        {tasksToShow && <p className="task-text">{currentTask.task}</p>}
+        {!tasksToShow && <ErrorMessage />}
+        {tasksToShow && <div className="task-card-buttons">
           <button onClick={markTaskRead} className="deny-button"></button>
           <button onClick={postTask} className="accept-button"></button>
-        </div>
+        </div>}
       </div>
-      <Link to='/'><button className="back-button"></button></Link>
+      <Link to="/">
+        <button className="back-button"></button>
+      </Link>
     </div>
   );
 };
