@@ -3,7 +3,7 @@
 const ErrorMessage = () => {
   return (
   <p>
-    Sorry, we have no unseen or unsaved tasks to show you!
+    Sorry, you've saved all the tasks in this category.
   </p>
   )
 }
