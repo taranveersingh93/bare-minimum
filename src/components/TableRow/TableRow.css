@@ -1,0 +1,40 @@
+.done {
+    text-decoration: line-through;
+}
+
+.check-task {
+    height: 25px;
+    width: 25px;
+    background-color: transparent;
+    background-image: url('../../images/empty-check.png');
+    border: none;
+}
+
+.checked {
+    background-color: transparent;
+    background-image: url('../../images/check-mark.png');
+    border: none;
+}
+
+.bin, .trash {
+    height: 25px;
+    width: 25px;
+}
+
+.trash {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+}
+
+.trash:hover, .check-task:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.center-clm {
+    display: flex;
+    justify-content: center;
+    padding: 7px
+}

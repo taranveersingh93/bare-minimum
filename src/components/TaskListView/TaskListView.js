@@ -2,18 +2,15 @@ import './TaskListView.css'
 import { useState } from 'react'
 import TableRow from '../TableRow/TableRow'
 
-
-const TaskListView = (props) => {
-
-  const [tasks, setTasks] = useState(props.savedData)
+const TaskListView = ({ savedTasks, setSavedTasks}) => {
 
   const deleteTask = (id) => {
-    const allOtherTasks = tasks.filter(saved => saved.id !== id)
-    setTasks(allOtherTasks)
+    const allOtherTasks = savedTasks.filter(saved => saved.id !== id)
+    setSavedTasks(allOtherTasks)
   }
 
-  const rows = tasks.map((saved, index) => {
-    return (<TableRow saved={saved} key={`row-${index}`} deleteTask={deleteTask} />)
+  const rows = savedTasks.map((savedTask, index) => {
+    return (<TableRow savedTask={savedTask} key={`row-${index}`} deleteTask={deleteTask} savedTasks={savedTasks} setSavedTasks={setSavedTasks} />)
   }) 
 
   return (
@@ -22,11 +19,11 @@ const TaskListView = (props) => {
         <tr>
           <th>Category</th>
           <th>Task</th>
-          <th className='complete-header'>Complete</th>
+          <th className='complete-header'>Actions</th>
         </tr>
       </thead>
       <tbody>
-        {!!tasks.length ? rows : <tr className='no-tasks'>Save a task to view it here!</tr>}
+        {tasks.length ? rows : <tr className='no-tasks'>Save a task to view it here!</tr>}
       </tbody>
     </table>
   )

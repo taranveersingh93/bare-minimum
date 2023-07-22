@@ -1,51 +1,15 @@
-.done {
-    text-decoration: line-through;
-}
-
-.check-task {
-    height: 25px;
-    width: 25px;
-    background-color: transparent;
-    background-image: url('empty-check.png');
-    border: none;
-}
-
-.checked {
-    background-color: transparent;
-    background-image: url('check-mark.png');
-    border: none;
-}
-
-.bin {
-    height: 25px;
-    width: 25px;
-}
-
-.trash {
-    border: none;
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-}
-
-.trash:hover, .check-task:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-}
-
-.center-clm {
-    display: flex;
-    justify-content: center;
-    padding: 7px
-}
-
 .complete-header {
     text-align: center;
 }
 
+.no-tasks {
+    padding: 10px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
 table {
     width: clamp(400px, 60%, 800px);
-    /* property: clamp(minimum, preferred, maximum); */
     margin-top: 20px;
     border-collapse: collapse;
     border-radius: 10px;
@@ -80,12 +44,6 @@ tr:nth-child(odd) {
 
 tr:nth-child(even) {
     background-color: rgba(251, 251, 254, 0.5);
-}
-
-.no-tasks {
-    padding: 10px;
-    text-align: center;
-    font-size: 1.5em;
 }
 
 ::-webkit-scrollbar {

@@ -5,8 +5,12 @@ import { Routes, Route } from 'react-router-dom';
 import SelectTaskView from '../SelectTaskView/SelectTaskView';
 import TaskListView from '../TaskListView/TaskListView'
 import savedData from '../../dataList/savedData'
+import { useState } from 'react';
 
 const App = () => {
+
+  const [savedTasks, setSavedTasks] = useState(savedData)
+
   return (
     <>
       <Navbar />
@@ -14,7 +18,7 @@ const App = () => {
         <Routes>
           <Route path='/:id' element={<SelectTaskView />} />
           <Route path='/' element={<HomeView />} />
-          <Route path='/tasklist' element={<TaskListView savedData={savedData}/>} />
+          <Route path='/tasklist' element={<TaskListView savedTasks={savedTasks} setSavedTasks={setSavedTasks}/>} />
         </Routes>
       </div>
     </>

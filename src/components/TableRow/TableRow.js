@@ -1,22 +1,23 @@
 import React from 'react'
 import { useState } from 'react'
-import bin from './bin.png'
+import './TableRow.css'
+import bin from '../../images/bin.png'
 
-const TableRow = ({saved, deleteTask}) => {
+const TableRow = ({savedTask, deleteTask, savedTasks, setSavedTasks}) => {
 
-    const [complete, setComplete] = useState(false)
+    // const [complete, setComplete] = useState(false)
+
 
     const handleChange = () => {
-        setComplete(!complete)
+        savedTask.complete = setSavedTasks(...savedTasks, )
     }
-
     
   return (
-    <tr className={complete ? 'done' : ''} >
-        <td>{saved.category}</td>
-        <td>{saved.task}</td>
-        <td className='center-clm'><button onClick={handleChange} className={complete ? 'check-task checked' : 'check-task' }/></td>
-        <td className='center-clm'><button onClick={() => deleteTask(saved.id)} className='trash bin'><img src={bin} className='bin'/></button></td>
+    <tr className={savedTask.complete ? 'done' : ''} >
+        <td>{savedTask.category}</td>
+        <td>{savedTask.task}</td>
+        <td className='center-clm'><button onClick={handleChange} className={savedTask.complete ? 'check-task checked' : 'check-task' }/></td>
+        <td className='center-clm'><button onClick={() => deleteTask(savedTask.id)} className='trash'><img src={bin} className='bin'/></button></td>
     </tr>
   )
 }
