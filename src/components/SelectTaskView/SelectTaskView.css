@@ -16,7 +16,7 @@
   width: 60vw;
   min-width: 250px;
   max-width: 500px;
-  min-height: 40%;
+  min-height: 60%;
   color: rgb(40, 34, 108, 0.9);
   font-family: 'kalam', cursive;
   font-size: 1.5rem;
@@ -29,6 +29,8 @@
 .task-text {
   margin: 0;
   height: 50%;
+  display: flex;
+  align-items: center;
 }
 
 .category-title {
@@ -53,7 +55,8 @@
 }
 
 .task-card-buttons {
-  width: 40%;
+  width: 80%;
+  height: 40%;
   display: flex;
   justify-content: space-evenly;
 }
@@ -65,7 +68,29 @@
   transition: 0.3s ease-in-out;
 }
 
-.card-icon:hover {
+/* .card-icon:hover {
   cursor: pointer;
   opacity: 1;
+} */
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 60%;
+}
+
+.icon-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  margin: 0;
+  text-align: center;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.icon-container:hover .icon-text, .icon-container:hover .card-icon {
+  opacity: 1;
+  cursor: pointer;
 }
