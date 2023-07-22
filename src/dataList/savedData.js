@@ -5,7 +5,7 @@ let savedData = [
     task: 'Do ten pushups.'
   },
   {
-    id:2,
+    id: 2,
     category: 'Exercise',
     task: 'Do a 10 second wall sit'
   },
