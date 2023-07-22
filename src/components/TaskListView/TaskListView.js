@@ -9,7 +9,7 @@ const TaskListView = ({ savedTasks, setSavedTasks}) => {
     setSavedTasks(allOtherTasks)
   }
 
-  const rows = savedTasks.map((savedTask, index) => {
+  const rows = savedTasks.sort((a, b) => b.id - a.id).map((savedTask, index) => {
     return (<TableRow savedTask={savedTask} key={`row-${index}`} deleteTask={deleteTask} savedTasks={savedTasks} setSavedTasks={setSavedTasks} />)
   }) 
 
@@ -23,7 +23,7 @@ const TaskListView = ({ savedTasks, setSavedTasks}) => {
         </tr>
       </thead>
       <tbody>
-        {tasks.length ? rows : <tr className='no-tasks'>Save a task to view it here!</tr>}
+        {savedTasks.length ? rows : <tr className='no-tasks'>Save a task to view it here!</tr>}
       </tbody>
     </table>
   )

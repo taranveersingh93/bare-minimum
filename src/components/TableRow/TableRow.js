@@ -5,11 +5,12 @@ import bin from '../../images/bin.png'
 
 const TableRow = ({savedTask, deleteTask, savedTasks, setSavedTasks}) => {
 
-    // const [complete, setComplete] = useState(false)
-
-
     const handleChange = () => {
-        savedTask.complete = setSavedTasks(...savedTasks, )
+        const allOtherTasks = savedTasks.filter(saved => saved.id !== savedTask.id)
+        const updatedTask = {...savedTask}
+        updatedTask.complete = !updatedTask.complete
+        const updatedTasks = [...allOtherTasks, updatedTask]
+        setSavedTasks(updatedTasks)
     }
     
   return (
