@@ -83,7 +83,7 @@ const SelectTaskView = () => {
   return (
     <div className="new-task-page">
       <div className="task-card">
-        <p className="task-text">{currentTask.text}</p>
+        <p className="task-text">{currentTask.task}</p>
         <div className="task-card-buttons">
           <button onClick={markTaskRead} className="deny-button"></button>
           <button onClick={postTask} className="accept-button"></button>
