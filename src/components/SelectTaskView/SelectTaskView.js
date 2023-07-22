@@ -4,6 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import savedData from '../../dataList/savedData';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import refresh from '../../images/refresh.png';
+import save from '../../images/save.png';
 
 const SelectTaskView = () => {
   const { category } = useParams();
@@ -112,8 +114,8 @@ const SelectTaskView = () => {
         {tasksToShow && <p className="task-text">{currentTask.task}</p>}
         {!tasksToShow && <ErrorMessage />}
         {tasksToShow && <div className="task-card-buttons">
-          <button onClick={markTaskRead} className="deny-button"></button>
-          <button onClick={postTask} className="accept-button"></button>
+          <img onClick={markTaskRead} src={refresh} className='refresh-icon'/>
+          <img onClick={postTask} src={save} className='save-icon'/>
         </div>}
       </div>
       <Link to="/">
