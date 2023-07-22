@@ -114,8 +114,8 @@ const SelectTaskView = () => {
         {tasksToShow && <p className="task-text">{currentTask.task}</p>}
         {!tasksToShow && <ErrorMessage />}
         {tasksToShow && <div className="task-card-buttons">
-          <img onClick={markTaskRead} src={refresh} className='refresh-icon'/>
-          <img onClick={postTask} src={save} className='save-icon'/>
+          <img onClick={markTaskRead} src={refresh} className='refresh-icon card-icon'/>
+          <img onClick={postTask} src={save} className='save-icon card-icon'/>
         </div>}
       </div>
       <Link to="/">
