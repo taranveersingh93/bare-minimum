@@ -5,18 +5,16 @@ import TableRow from '../TableRow/TableRow'
 
 const TaskListView = (props) => {
 
-  const [] = useState()
+  const [tasks, setTasks] = useState(props.savedData)
 
   const deleteTask = (id) => {
-    const foundTask = props.savedData.filter(saved => saved.id === id)
-    const foundTaski = props.savedData.indexOf(foundTask)
-    props.savedData.splice(foundTaski, 1)
-    return props.savedData
+    const allOtherTasks = tasks.filter(saved => saved.id !== id)
+    setTasks(allOtherTasks)
   }
 
-  const task = props.savedData.map((saved, index) => {
+  const rows = tasks.map((saved, index) => {
     return (<TableRow saved={saved} key={`row-${index}`} deleteTask={deleteTask} />)
-  })
+  }) 
 
   return (
     <table>
@@ -28,7 +26,7 @@ const TaskListView = (props) => {
         </tr>
       </thead>
       <tbody>
-        {task}
+        {!!tasks.length ? rows : <tr className='no-tasks'>Save a task to view it here!</tr>}
       </tbody>
     </table>
   )

@@ -28,6 +28,16 @@ let savedData = [
     id: 6,
     category: 'Health',
     task: 'Take a shower'
+  },
+  {
+    id: 7,
+    category: 'Mental Health',
+    task: 'Watch episode 190 of One Piece'
+  },
+  {
+    id: 8,
+    category: 'Cleaning',
+    task: 'Scrub the toilet'
   }
 ]
 
