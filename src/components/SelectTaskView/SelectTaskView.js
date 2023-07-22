@@ -1,5 +1,9 @@
+import React from 'react'
+
 const SelectTaskView = () => {
-  return <></>
+  return (
+    <div>SelectTaskView</div>
+  )
 }
 
-export default SelectTaskView;
+export default SelectTaskView
