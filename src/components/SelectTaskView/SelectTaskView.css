@@ -1,0 +1,21 @@
+.back-button {
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+}
+
+.accept-button,
+.deny-button {
+  height: 30px;
+  width: 90px;
+  margin: 15px;
+  border-radius: 10px;
+}
+
+.accept-button {
+  background-color: green;
+}
+
+.deny-button {
+  background-color: red;
+}

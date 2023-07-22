@@ -1,5 +1,6 @@
 import tasks from '../../data/data';
-import { useParams } from 'react-router-dom';
+import './SelectTaskView.css'
+import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 const SelectTaskView = () => {
@@ -9,7 +10,7 @@ const SelectTaskView = () => {
   const [unseenTasks, setUnseenTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState('');
 
-  const getTasks = (cat) => {
+  const fetchTasks = (cat) => {
     if (cat !== 'all') {
       setCurrentTasks(tasks[cat]);
     } else {
@@ -19,11 +20,10 @@ const SelectTaskView = () => {
       });
       setCurrentTasks(allTasks);
     }
-    
   };
 
   useEffect(() => {
-    getTasks(category);
+    fetchTasks(category);
   }, []);
 
   const getUnseenTasks = (tasks) => {
@@ -39,27 +39,57 @@ const SelectTaskView = () => {
 
   const getCurrentTask = (options) => {
     let randomIndex = Math.floor(Math.random() * options.length);
-    // options[randomIndex].seen = true;
     setCurrentTask(options[randomIndex]);
   };
 
   useEffect(() => {
-    getCurrentTask(unseenTasks);
-  }, []);
+    if (unseenTasks.length) {
+      getCurrentTask(unseenTasks);
+    }
+  }, [unseenTasks]);
 
-  console.log(currentTasks)
-  console.log(unseenTasks)
-  
+  const checkForReset = () => {
+    if (unseenTasks.length === 1) {
+      const cloneTasks = [...currentTasks];
+      cloneTasks.forEach((task) => {
+        task.seen = false;
+      });
+      setCurrentTasks(cloneTasks);
+    }
+  };
+
+  const markTaskRead = () => {
+    const allTasks = [...currentTasks];
+    allTasks.find((task) => task.id === currentTask.id).seen = true;
+
+    setCurrentTasks(allTasks);
+    checkForReset();
+  };
+
+  const postTask = () => {}
+
+  // useEffect(() => {
+  //   console.log('currentTasks', currentTasks);
+  // }, [currentTasks])
+
+  // useEffect(() => {
+  //   console.log('unseenTasks', unseenTasks);
+  // }, [unseenTasks])
+
+  // useEffect(() => {
+  //   console.log('currentTask', currentTask)
+  // }, [currentTask])
+
   return (
     <div className="new-task-page">
       <div className="task-card">
-        {/* <p className="task-text">${currentTask.text}</p> */}
+        <p className="task-text">{currentTask.text}</p>
         <div className="task-card-buttons">
-          <button className="deny-button"></button>
-          <button className="accept-button"></button>
+          <button onClick={markTaskRead} className="deny-button"></button>
+          <button onClick={postTask} className="accept-button"></button>
         </div>
       </div>
-      <button className="back-button"></button>
+      <Link to='/'><button className="back-button"></button></Link>
     </div>
   );
 };
