@@ -95,11 +95,11 @@ const SelectTaskView = () => {
     setCurrentTasks(allTasks);
     checkForReset();
   };
-
-  useEffect(() => {
-    console.log('savedData', savedData);
-    console.log('unseenTasks', unseenTasks);
-  }, [unseenTasks]);
+  
+  // useEffect(() => {
+  //   console.log('savedData', savedData);
+  //   console.log('unseenTasks', unseenTasks);
+  // }, [unseenTasks]);
 
   // useEffect(() => {
   //   console.log('currentTask', currentTask)
@@ -107,6 +107,7 @@ const SelectTaskView = () => {
 
   return (
     <div className="new-task-page">
+      <h1 className="category-title">{currentTask.category}</h1>
       <div className="task-card">
         {tasksToShow && <p className="task-text">{currentTask.task}</p>}
         {!tasksToShow && <ErrorMessage />}
