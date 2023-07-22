@@ -15,8 +15,8 @@ const TaskListView = (props) => {
         <tr>
           <th>Category</th>
           <th>Task</th>
-          <th>Complete?</th>
-          <th>Delete</th>
+          <th className='complete-header'>Complete</th>
+          {/* <th>Delete</th> */}
         </tr>
       </thead>
       <tbody>

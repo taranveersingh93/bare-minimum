@@ -23,6 +23,11 @@ let savedData = [
     id: 5,
     category: 'Health',
     task: 'Brush your teeth'
+  },
+  {
+    id: 6,
+    category: 'Health',
+    task: 'Take a shower'
   }
 ]
 
