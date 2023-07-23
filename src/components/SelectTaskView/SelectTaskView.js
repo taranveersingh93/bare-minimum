@@ -5,7 +5,9 @@ import { useState, useEffect } from 'react';
 import savedData from '../../dataList/savedData';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import refresh from '../../images/refresh.png';
-import save from '../../images/save.png';
+import savePurpleIcon from '../../images/save.png';
+import saveGreenIcon from '../../images/save-green.png';
+import saveRedIcon from '../../images/save-red.png';
 
 const SelectTaskView = () => {
   const { category } = useParams();
@@ -16,7 +18,8 @@ const SelectTaskView = () => {
   const [tasksToShow, setTasksToShow] = useState(false);
   const [displaySavedResponse, setDisplaySavedResponse] = useState(false);
   const [saveSuccessful, setSaveSuccessful] = useState(false);
-  const [saveResponse, setSaveResponse] = useState('')
+  const [saveResponse, setSaveResponse] = useState('');
+  const [saveIcon, setSaveIcon] = useState(savePurpleIcon);
 
   const fetchTasks = (category) => {
     if (category !== 'all') {
@@ -123,14 +126,17 @@ const SelectTaskView = () => {
     }
   }, [saveSuccessful])
   
-  // useEffect(() => {
-  //   console.log('savedData', savedData);
-  //   console.log('unseenTasks', unseenTasks);
-  // }, [unseenTasks]);
-
-  // useEffect(() => {
-  //   console.log('currentTask', currentTask)
-  // }, [currentTask])
+  useEffect(() => {
+    if (displaySavedResponse && saveSuccessful) {
+      setSaveIcon(saveGreenIcon);
+    };
+    if (displaySavedResponse && !saveSuccessful) {
+      setSaveIcon(saveRedIcon);
+    }
+    if (!displaySavedResponse) {
+      setSaveIcon(savePurpleIcon);
+    }
+  }, [displaySavedResponse, saveSuccessful])
 
   return (
     <div className="new-task-page">
@@ -147,7 +153,7 @@ const SelectTaskView = () => {
             <p className='icon-text refresh-text'>New task</p>
           </div>
           <div className='icon-container'  onClick={postTask}>
-            <img src={save} className='save-icon card-icon'/>
+            <img src={saveIcon} className='save-icon card-icon'/>
             <p className='icon-text save-text'>Save task</p>
           </div>
         </div>}
