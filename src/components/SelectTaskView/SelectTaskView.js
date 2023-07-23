@@ -158,9 +158,14 @@ const SelectTaskView = () => {
           </div>
         </div>}
       </div>
-      <Link to="/">
-        <button className="back-button"></button>
-      </Link>
+      <div className='navigation-buttons'>
+        <Link to="/">
+          <button className="back-button navigation-button">Choose categories</button>
+        </Link>
+        <Link to="/tasklist">
+          <button className='task-button navigation-button'>View all saved tasks</button>
+        </Link>
+      </div>
     </div>
   );
 };

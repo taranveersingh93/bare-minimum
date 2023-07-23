@@ -49,11 +49,25 @@
   text-align: center;
 }
 
-.back-button {
+.navigation-buttons {
+  margin-top: 20px;
+  display: flex;
+  width: 50vw;
+  min-width: 320px;
+  justify-content: space-evenly;
+}
+
+.navigation-button {
   height: 50px;
-  width: 50px;
-  border-radius: 25px;
-  margin: 25px;
+  width: 12vw;
+  min-width: 120px;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: solid 1px white;
+  background-color: rgba(255, 255, 255, 0.5);
+  /* background-color: rgba(91, 74, 202, 0.1); */
+  border: solid 1px rgb(40, 34, 108);;
+
 }
 
 .task-card-buttons {
@@ -113,9 +127,12 @@
   transition: 0.3s ease-in-out;
 }
 
+.icon-container:hover {
+  cursor: pointer;
+}
+
 .icon-container:hover .icon-text, .icon-container:hover .card-icon {
   opacity: 1;
-  cursor: pointer;
 }
 
 @media (max-width: 650px) {
@@ -131,6 +148,10 @@
     height: 25%;
   }
 
+  .navigation-button {
+    font-size: 0.8rem;
+    margin: 0;
+  }
   .refresh-icon-container:hover .refresh-icon{
     transform: rotate(0deg);
   }
