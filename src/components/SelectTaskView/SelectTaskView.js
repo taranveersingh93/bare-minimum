@@ -163,7 +163,7 @@ const SelectTaskView = () => {
           <button className="back-button navigation-button">Choose categories</button>
         </Link>
         <Link to="/tasklist">
-          <button className='task-button navigation-button'>View all saved tasks</button>
+          <button className='task-button navigation-button'>View saved tasks</button>
         </Link>
       </div>
     </div>
