@@ -68,17 +68,34 @@
   transition: 0.3s ease-in-out;
 }
 
-/* .card-icon:hover {
-  cursor: pointer;
-  opacity: 1;
-} */
-
 .icon-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   width: 60%;
+}
+
+.saved-confirmation {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  opacity: 0;
+}
+
+.save-display {
+  animation:display-message 1s ease-in-out;
+}
+
+@keyframes display-message {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .icon-text {

@@ -14,10 +14,13 @@ const SelectTaskView = () => {
   const [unseenTasks, setUnseenTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState('');
   const [tasksToShow, setTasksToShow] = useState(false);
+  const [displaySavedResponse, setDisplaySavedResponse] = useState(false);
+  const [saveSuccessful, setSaveSuccessful] = useState(false);
+  const [saveResponse, setSaveResponse] = useState('')
 
-  const fetchTasks = (cat) => {
-    if (cat !== 'all') {
-      setCurrentTasks(tasks[cat]);
+  const fetchTasks = (category) => {
+    if (category !== 'all') {
+      setCurrentTasks(tasks[category]);
     } else {
       let allTasks = [];
       tasks.forEach((task) => {
@@ -50,15 +53,13 @@ const SelectTaskView = () => {
     getUnseenTasks(currentTasks);
   }, [currentTasks]);
 
-  const getCurrentTask = (options) => {
-    let randomIndex = Math.floor(Math.random() * options.length);
-    setCurrentTask(options[randomIndex]);
+  const getCurrentTask = (tasks) => {
+    let randomIndex = Math.floor(Math.random() * tasks.length);
+    setCurrentTask(tasks[randomIndex]);
   };
 
   useEffect(() => {
-    if (!unseenTasks.length) {
-      
-    } else {
+    if (unseenTasks.length) {
       getCurrentTask(unseenTasks);
     }
   }, [unseenTasks]);
@@ -73,6 +74,14 @@ const SelectTaskView = () => {
     }
   };
 
+  useEffect(() => {
+    if (displaySavedResponse) {
+      setTimeout(() => {
+        setDisplaySavedResponse(false)
+      }, 1000)
+    }
+  }, [displaySavedResponse])
+
   const markTaskRead = () => {
     const allTasks = [...currentTasks];
     allTasks.find((task) => task.id === currentTask.id).seen = true;
@@ -81,6 +90,11 @@ const SelectTaskView = () => {
     checkForReset();
   };
 
+  const refreshTasks = tasks => {
+    setCurrentTasks(tasks);
+    checkForReset()
+  }
+ 
   const postTask = () => {
     const acceptedTask = {
       id: currentTask.id,
@@ -89,14 +103,25 @@ const SelectTaskView = () => {
     };
     if (!savedData.find((task) => task.id === acceptedTask.id)) {
       savedData.push(acceptedTask);
+      setSaveSuccessful(true);
+      setDisplaySavedResponse(true);
+      const allTasks = [...currentTasks];
+      allTasks.find((task) => task.id === currentTask.id).seen = true;
+      allTasks.find((task) => task.id === currentTask.id).saved = true;
+      setTimeout(() => {refreshTasks(allTasks)}, 1000);
+    } else {
+      setSaveSuccessful(false);
+      setDisplaySavedResponse(true);
     }
-    const allTasks = [...currentTasks];
-    allTasks.find((task) => task.id === currentTask.id).seen = true;
-    allTasks.find((task) => task.id === currentTask.id).saved = true;
-
-    setCurrentTasks(allTasks);
-    checkForReset();
   };
+
+  useEffect(()=> {
+    if (saveSuccessful) {
+      setSaveResponse('Saved!')
+    } else {
+      setSaveResponse('Something went wrong... but you tried!')
+    }
+  }, [saveSuccessful])
   
   // useEffect(() => {
   //   console.log('savedData', savedData);
@@ -111,8 +136,11 @@ const SelectTaskView = () => {
     <div className="new-task-page">
       <h1 className="category-title">{currentTask.category}</h1>
       <div className="task-card">
-        {tasksToShow && <p className="task-text">{currentTask.task}</p>}
+        {tasksToShow && <p className='task-text'>{currentTask.task}</p>}
         {!tasksToShow && <ErrorMessage />}
+        <p className={displaySavedResponse? 'save-display saved-confirmation': 'saved-confirmation'}>
+          {saveResponse}
+        </p>
         {tasksToShow && <div className="task-card-buttons">
           <div className='icon-container'  onClick={markTaskRead}>
             <img src={refresh} className='refresh-icon card-icon'/>
