@@ -6,6 +6,7 @@ const HomeView = () => {
   return (
     <div className='home-view'>
       <IntroText />
+      <h1 className='choose-category-title'>Choose a category from the options below</h1>
       <div className='categories'>
         <Link to='/exercise' ><section className='category'>Exercise</section></Link>
         <Link to='/cleaning' ><section className='category'>Cleaning</section></Link>
