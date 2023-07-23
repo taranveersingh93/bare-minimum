@@ -24,6 +24,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  border: solid 1px rgb(40, 34, 108);;
 }
 
 .task-text {
@@ -34,6 +35,7 @@
 }
 
 .category-title {
+  border: solid 1px white;
   color: rgb(40, 34, 108, 1);
   font-weight: 500;
   font-family: 'kalam', cursive;
@@ -72,8 +74,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 60%;
+}
+
+.refresh-icon-container:hover .refresh-icon{
+  transform: rotate(40deg);
 }
 
 .saved-confirmation {
@@ -110,4 +116,22 @@
 .icon-container:hover .icon-text, .icon-container:hover .card-icon {
   opacity: 1;
   cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  .new-task-page {
+    height: 100%;
+  }
+
+  .icon-text, .card-icon {
+    opacity: 1;
+  }
+
+  .task-card-buttons {
+    height: 25%;
+  }
+
+  .refresh-icon-container:hover .refresh-icon{
+    transform: rotate(0deg);
+  }
 }

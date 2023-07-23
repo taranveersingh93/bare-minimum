@@ -142,9 +142,9 @@ const SelectTaskView = () => {
           {saveResponse}
         </p>
         {tasksToShow && <div className="task-card-buttons">
-          <div className='icon-container'  onClick={markTaskRead}>
+          <div className='refresh-icon-container icon-container'  onClick={markTaskRead}>
             <img src={refresh} className='refresh-icon card-icon'/>
-            <p className='icon-text refresh-text'>Show another task</p>
+            <p className='icon-text refresh-text'>New task</p>
           </div>
           <div className='icon-container'  onClick={postTask}>
             <img src={save} className='save-icon card-icon'/>
