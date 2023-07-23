@@ -54,6 +54,7 @@
   width: 50vw;
   min-width: 320px;
   justify-content: space-evenly;
+  max-width: 500px;
 }
 
 .navigation-button {
