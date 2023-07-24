@@ -1,0 +1,164 @@
+.new-task-page {
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.task-card {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 25px 50px;
+  border-radius: 20px;
+  width: 60vw;
+  min-width: 250px;
+  max-width: 500px;
+  min-height: 60%;
+  color: rgb(40, 34, 108, 0.9);
+  font-family: 'kalam', cursive;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: solid 1px rgb(40, 34, 108);;
+}
+
+.task-text {
+  margin: 0;
+  height: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.category-title {
+  border: solid 1px white;
+  color: rgb(40, 34, 108, 1);
+  background-color: rgba(91, 74, 202, 0.1);
+  font-weight: 500;
+  font-family: 'kalam', cursive;
+  font-size: 1.8rem;
+  width: 60vw;
+  padding: 5px 50px;
+  min-width: 250px;
+  max-width: 500px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.navigation-buttons {
+  margin-top: 20px;
+  display: flex;
+  width: 50vw;
+  min-width: 320px;
+  justify-content: space-evenly;
+  max-width: 500px;
+}
+
+.navigation-button {
+  font-family: 'Courier New', Courier, monospace;
+  height: 50px;
+  width: 12vw;
+  min-width: 120px;
+  border-radius: 10px;
+  font-size: 1rem;
+  border: solid 1px white;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: solid 1px rgb(40, 34, 108);;
+  transition: 0.3s ease;
+}
+
+.navigation-button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.task-card-buttons {
+  width: 80%;
+  height: 40%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-icon {
+  height: 30px;
+  width: 30px;
+  opacity: 0.6;
+  transition: 0.3s ease-in-out;
+}
+
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.refresh-icon-container:hover .refresh-icon{
+  transform: rotate(40deg);
+}
+
+.saved-confirmation {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  opacity: 0;
+}
+
+.save-display {
+  animation:display-message 1s ease-in-out;
+}
+
+@keyframes display-message {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.icon-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  margin: 0;
+  text-align: center;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.icon-container:hover {
+  cursor: pointer;
+}
+
+.icon-container:hover .icon-text, .icon-container:hover .card-icon {
+  opacity: 1;
+}
+
+@media (max-width: 650px) {
+  .new-task-page {
+    height: 100%;
+  }
+
+  .icon-text, .card-icon {
+    opacity: 1;
+  }
+
+  .task-card-buttons {
+    height: 25%;
+  }
+
+  .navigation-button {
+    font-size: 0.8rem;
+    margin: 0;
+  }
+
+  .refresh-icon-container:hover .refresh-icon{
+    transform: rotate(0deg);
+  }
+}

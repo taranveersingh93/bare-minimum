@@ -1,51 +1,43 @@
 let savedData = [
   {
-    id: 1,
+    id: 61,
     category: "Exercise",
-    task: 'Do ten pushups.',
-    complete: false
+    task: 'Do ten pushups.'
   },
   {
-    id: 2,
+    id: 62,
     category: 'Exercise',
-    task: 'Do a 10 second wall sit',
-    complete: false
+    task: 'Do a 10 second wall sit'
   },
   {
-    id: 3,
+    id: 63,
     category: 'Exercise',
-    task: 'Put on music and dance for half of a song',
-    complete: false
+    task: 'Put on music and dance for half of a song'
   },
   {
-    id: 4,
+    id: 64,
     category: 'Cleaning',
-    task: 'Organize sock drawer',
-    complete: false
+    task: 'Organize sock drawer'
   },
   {
-    id: 5,
+    id: 65,
     category: 'Health',
-    task: 'Brush your teeth',
-    complete: false
+    task: 'Brush your teeth'
   },
   {
-    id: 6,
+    id: 66,
     category: 'Health',
-    task: 'Take a shower',
-    complete: false
+    task: 'Take a shower'
   },
   {
-    id: 7,
+    id: 67,
     category: 'Mental Health',
-    task: 'Watch episode 190 of One Piece',
-    complete: false
+    task: 'Watch episode 190 of One Piece'
   },
   {
-    id: 8,
+    id: 68,
     category: 'Cleaning',
-    task: 'Scrub the toilet',
-    complete: false
+    task: 'Scrub the toilet'
   }
 ]
 

@@ -16,7 +16,7 @@ const App = () => {
       <Navbar />
       <div className='main-view'>
         <Routes>
-          <Route path='/:id' element={<SelectTaskView />} />
+          <Route path='/:category' element={<SelectTaskView />} />
           <Route path='/' element={<HomeView />} />
           <Route path='/tasklist' element={<TaskListView savedTasks={savedTasks} setSavedTasks={setSavedTasks}/>} />
         </Routes>
