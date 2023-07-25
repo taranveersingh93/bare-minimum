@@ -3,8 +3,7 @@ describe('homepage spec', () => {
     cy.visit('localhost:3000');
   });
   it('should have a site title at the top', () => {
-    cy.get('.logo-text').contains('span', 'Bare')
-    .get('.logo-text').contains('span', 'Minimum');
+    cy.get('.logo-text').contains('span', 'Bare').get('.logo-text').contains('span', 'Minimum');
   });
   it('should have a link that takes you to your tasks page', () => {
     cy.get('.toggle-views')
@@ -24,25 +23,22 @@ describe('homepage spec', () => {
   it('should have instructions about selecting a category', () => {
     cy.get('.choose-category-title').contains('h1', 'Choose a category from the options below');
   });
-  it('should render 6 categories', () => {
-    cy.get('.categories .category')
-      .should('contain', 'Exercise')
-      .and('contain', 'Cleaning')
-      .and('contain', 'Organization')
-      .and('contain', 'Work')
-      .and('contain', 'Mental Care')
-      .and('contain', 'Health');
-
-      const categories = cy.get('.categories .category')
-      for (const category of ['Exercise', 'Cleaning']) {
-        categories.should('contain', category)
-      }
-  });
-  it('should navigate you to the Exercise page if clicked', () => {
-    cy.get('.categories')
-      .contains('.category', 'Exercise')
-      .click()
-      .get('.new-task-page')
-      .contains('h1', 'Exercise');
+  describe('categories', () => {
+    const categories = ['Exercise', 'Cleaning', 'Organization', 'Work', 'Mental Care', 'Health'];
+    it('should render 6 categories', () => {
+      const cypressCategories = cy.get('.categories .category');
+      categories.forEach((cat) => {
+        cypressCategories.should('contain', cat);
+      });
+    });
+    categories.forEach((category) => {
+      it(`should navigate you to the ${category} page if clicked`, () => {
+        cy.get('.categories')
+          .contains('.category', category)
+          .click()
+          .get('.new-task-page')
+          .contains('h1', category);
+      });
+    });
   });
 });
