@@ -1,4 +1,3 @@
-// import tasks from '../../data/data';
 import './SelectTaskView.css';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
