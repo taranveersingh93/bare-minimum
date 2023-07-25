@@ -34,7 +34,7 @@ const SelectTaskView = () => {
     if (category !== 'all') {
       fetchCategoryTask(category).then(
         data => setCurrentTasks(data)
-      )
+      ).catch(error => setError({ error: true, response: error }))
     } else {
   let allTasks = [];
   tasks.forEach((task) => {
@@ -155,9 +155,9 @@ return (
   <div className="new-task-page">
     <h1 className="category-title">{currentTask.category}</h1>
     <div className="task-card">
-      {(tasksToShow && tasks.length !== 0) && <p className='task-text'>{currentTask.task}</p>}
-      {!tasksToShow && <ErrorMessage />}
-      {error}
+      {(tasksToShow && tasks.length !== 0 && !error.error) && <p className='task-text'>{currentTask.task}</p>}
+      {(!tasksToShow && !error.error) && <ErrorMessage />}
+      {error.error && <p className='error-message'>{`We apologize! ${error.response}. Please try again later.`}</p>}
       <p className={displaySavedResponse ? 'save-display saved-confirmation' : 'saved-confirmation'}>
         {saveResponse}
       </p>
