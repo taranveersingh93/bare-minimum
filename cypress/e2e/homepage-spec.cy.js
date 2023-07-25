@@ -23,7 +23,7 @@ describe('homepage spec', () => {
   it('should have instructions about selecting a category', () => {
     cy.get('.choose-category-title').contains('h1', 'Choose a category from the options below');
   });
-  describe('categories', () => {
+  describe('categories on homepage leading to their respective pages', () => {
     const categories = ['Exercise', 'Cleaning', 'Organization', 'Work', 'Mental Care', 'Health'];
     it('should render 6 categories', () => {
       const cypressCategories = cy.get('.categories .category');
