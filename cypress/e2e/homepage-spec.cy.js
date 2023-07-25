@@ -24,6 +24,11 @@ describe('homepage spec', () => {
     cy.get('.choose-category-title').contains('h1', 'Choose a category from the options below');
   });
   it('should render 6 categories', () => {
-    cy.get('.categories');
+    cy.get('.categories').contains('.category', 'Exercise')
+    .get('.categories').contains('.category', 'Cleaning')
+    .get('.categories').contains('.category', 'Organization')
+    .get('.categories').contains('.category', 'Work')
+    .get('.categories').contains('.category', 'Mental Care')
+    .get('.categories').contains('.category', 'Health');
   });
 });
