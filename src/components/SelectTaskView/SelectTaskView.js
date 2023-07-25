@@ -14,6 +14,7 @@ const SelectTaskView = () => {
 
   const [currentTasks, setCurrentTasks] = useState([]);
   const [tasks, setTasks] = useState([])
+  const [error, setError] = useState({ error: false, response: '' })
   const [unseenTasks, setUnseenTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState('');
   const [tasksToShow, setTasksToShow] = useState(false);
@@ -25,6 +26,7 @@ const SelectTaskView = () => {
   useEffect(() => {
     fetchAllTasks().then(
       data => setTasks(data)
+    ).catch(error => setError({ error: true, response: error })
     )
   }, [tasks])
 
@@ -155,6 +157,7 @@ return (
     <div className="task-card">
       {(tasksToShow && tasks.length !== 0) && <p className='task-text'>{currentTask.task}</p>}
       {!tasksToShow && <ErrorMessage />}
+      {error}
       <p className={displaySavedResponse ? 'save-display saved-confirmation' : 'saved-confirmation'}>
         {saveResponse}
       </p>
