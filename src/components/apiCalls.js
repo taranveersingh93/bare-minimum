@@ -8,7 +8,7 @@ async function fetchTasks() {
   return data
 }
 
-async function fetchCatergoryTask(category) {
+async function fetchCategoryTask(category) {
   const response = await fetch(`http://localhost:3001/api/v1/tasks/${category}`)
   if (!response.ok) {
     throw new Error(response.statusText)
@@ -16,3 +16,5 @@ async function fetchCatergoryTask(category) {
   const data = await response.json()
   return data
 }
+
+export {fetchTasks, fetchCategoryTask}

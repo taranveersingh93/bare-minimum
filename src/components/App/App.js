@@ -4,12 +4,18 @@ import HomeView from '../HomeView/HomeView';
 import { Routes, Route } from 'react-router-dom';
 import SelectTaskView from '../SelectTaskView/SelectTaskView';
 import TaskListView from '../TaskListView/TaskListView'
-import savedData from '../../dataList/savedData'
-import { useState } from 'react';
+import { fetchTasks } from '../apiCalls'
+import { useState, useEffect } from 'react';
 
 const App = () => {
 
-  const [savedTasks, setSavedTasks] = useState(savedData)
+  useEffect(() => {
+    fetchTasks().then(
+      data => setSavedTasks(data)
+    )
+  })
+
+  const [savedTasks, setSavedTasks] = useState('')
 
   return (
     <>
