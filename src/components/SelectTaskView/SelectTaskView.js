@@ -155,6 +155,7 @@ return (
   <div className="new-task-page">
     <h1 className="category-title">{currentTask.category}</h1>
     <div className="task-card">
+      {tasksToShow === false && <h1>Loading...</h1>}
       {(tasksToShow && tasks.length !== 0 && !error.error) && <p className='task-text'>{currentTask.task}</p>}
       {(!tasksToShow && !error.error) && <ErrorMessage />}
       {error.error && <p className='error-message'>{`We apologize! ${error.response}. Please try again later.`}</p>}
