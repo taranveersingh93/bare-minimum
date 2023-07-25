@@ -13,7 +13,7 @@ const SelectTaskView = () => {
   const { category } = useParams();
 
   const [currentTasks, setCurrentTasks] = useState([]);
-  const [tasks, setTasks] = useState('')
+  const [tasks, setTasks] = useState([])
   const [unseenTasks, setUnseenTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState('');
   const [tasksToShow, setTasksToShow] = useState(false);
@@ -47,7 +47,7 @@ useEffect(() => {
 }, []);
 
 const getUnseenTasks = (tasks) => {
-  if (tasks !== '') {
+  if (tasks.length !== 0) {
     const filteredTasks = tasks.filter((task) => {
       return !task.seen && !task.saved;
     })
@@ -153,12 +153,12 @@ return (
   <div className="new-task-page">
     <h1 className="category-title">{currentTask.category}</h1>
     <div className="task-card">
-      {(tasksToShow && tasks !== '') && <p className='task-text'>{currentTask.task}</p>}
+      {(tasksToShow && tasks.length !== 0) && <p className='task-text'>{currentTask.task}</p>}
       {!tasksToShow && <ErrorMessage />}
       <p className={displaySavedResponse ? 'save-display saved-confirmation' : 'saved-confirmation'}>
         {saveResponse}
       </p>
-      {(tasksToShow && tasks !== '') && <div className="task-card-buttons">
+      {(tasksToShow && tasks.length !== 0) && <div className="task-card-buttons">
         <div className='refresh-icon-container icon-container' onClick={markTaskRead}>
           <img src={refresh} className='refresh-icon card-icon' />
           <p className='icon-text refresh-text'>New task</p>
