@@ -1,5 +1,5 @@
 
-async function fetchTasks() {
+async function fetchAllTasks() {
   const response = await fetch('http://localhost:3001/api/v1/tasks')
   if (!response.ok) {
     throw new Error(response.statusText)
@@ -17,4 +17,7 @@ async function fetchCategoryTask(category) {
   return data
 }
 
-export {fetchTasks, fetchCategoryTask}
+export {
+  fetchAllTasks,
+  fetchCategoryTask
+}
