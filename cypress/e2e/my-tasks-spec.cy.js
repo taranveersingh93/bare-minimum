@@ -1,6 +1,10 @@
 describe('my tasks page spec', () => {
   const categories = ['Exercise', 'Cleaning', 'Organization', 'Work', 'Mental Care', 'Health'];
   beforeEach(() => {
+    cy.intercept('GET', 'http://localhost:3001/api/v1/savedtasks', {
+      statusCode: 200,
+      fixture: 'savedTasks',
+    })
     cy.visit('localhost:3000/tasklist');
   });
   it('displays a table with appropriate headings', () => {

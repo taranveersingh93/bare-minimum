@@ -28,7 +28,7 @@ const SelectTaskView = () => {
       data => setTasks(data)
     ).catch(error => setError({ error: true, response: error })
     )
-  }, [tasks])
+  }, [])
 
   const fetchTasks = (category) => {
     if (category !== 'all') {
