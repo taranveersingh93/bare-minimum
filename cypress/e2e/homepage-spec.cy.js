@@ -41,9 +41,4 @@ describe('homepage spec', () => {
       });
     });
   });
-  describe('sad path testing', () => {
-    it('should show Loading error if fetch has not yet loaded', () => {
-      cy.intercept()
-    })
-  })
 });
