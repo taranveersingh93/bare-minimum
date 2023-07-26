@@ -113,10 +113,11 @@ const postTask = () => {
     id: currentTask.id,
     category: currentTask.category,
     task: currentTask.task,
+    complete: false
   };
   if (!savedTasks.find((task) => task.id === acceptedTask.id)) {
-    postSavedTask(acceptedTask).then(task => {
-      setSavedTasks([...savedTasks, task])
+    postSavedTask(acceptedTask).then(updatedTasks => {
+      setSavedTasks(updatedTasks)
     }).catch(error => setError({ error: true, response: error }))
     // savedData.push(acceptedTask);
     setSaveSuccessful(true);

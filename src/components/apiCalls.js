@@ -40,7 +40,10 @@ async function postSavedTask(task) {
 }
 
 async function deleteSavedTask(id) {
-  const response = await fetch(`http://localhost:3001/api/v1/savedtasks`)
+  const response = await fetch(`http://localhost:3001/api/v1/savedtasks/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' }
+  })
   if (!response.ok) {
     throw new Error(response.statusText)
   }
