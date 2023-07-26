@@ -119,7 +119,6 @@ const postTask = () => {
     postSavedTask(acceptedTask).then(updatedTasks => {
       setSavedTasks(updatedTasks)
     }).catch(error => setError({ error: true, response: error }))
-    // savedData.push(acceptedTask);
     setSaveSuccessful(true);
     setDisplaySavedResponse(true);
     const allTasks = [...currentTasks];

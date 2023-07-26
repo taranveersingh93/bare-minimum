@@ -39,6 +39,22 @@ async function postSavedTask(task) {
   return data
 }
 
+async function patchTask(id, updatedCompletedStatus) {
+  const response = await fetch(`http://localhost:3001/api/v1/savedtasks/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ completed: updatedCompletedStatus })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    console.log('Task updated successfully!');
+  })
+  const data = await response.json()
+  return data
+}
+
 async function deleteSavedTask(id) {
   const response = await fetch(`http://localhost:3001/api/v1/savedtasks/${id}`, {
     method: 'DELETE',
@@ -56,5 +72,6 @@ export {
   fetchCategoryTask,
   fetchSavedTasks,
   postSavedTask,
+  patchTask,
   deleteSavedTask
 }

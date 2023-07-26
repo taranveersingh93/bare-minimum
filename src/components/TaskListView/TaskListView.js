@@ -1,13 +1,9 @@
 import './TaskListView.css'
 import TableRow from '../TableRow/TableRow'
-import { deleteSavedTask } from '../apiCalls'
+import { deleteSavedTask, patchTask } from '../apiCalls'
 import { useEffect } from 'react'
 
 const TaskListView = ({savedTasks, setSavedTasks}) => {
-
-  // useEffect(() => {
-
-  // }, [savedTasks])
 
   const deleteTask = (id) => {
     deleteSavedTask(id).then(newSaved => {
@@ -16,11 +12,10 @@ const TaskListView = ({savedTasks, setSavedTasks}) => {
   }
 
   const handleChange = (savedTask) => {
-    const allOtherTasks = savedTasks.filter(saved => saved.id !== savedTask.id)
-    const updatedTask = {...savedTask}
-    updatedTask.complete = !updatedTask.complete
-    const updatedTasks = [...allOtherTasks, updatedTask]
-    setSavedTasks(updatedTasks)
+    savedTask.complete = !savedTask.complete
+    patchTask(savedTask.id, savedTask.complete)
+    .then(updatedTasks => setSavedTasks(updatedTasks))
+    .catch(console.log(error))
   }
 
   const rows = () => savedTasks.sort((a,b) => b.id - a.id).map((savedTask, index) => {
