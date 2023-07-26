@@ -1,7 +1,6 @@
 import './TaskListView.css'
 import TableRow from '../TableRow/TableRow'
 import { deleteSavedTask, patchTask } from '../apiCalls'
-import { useEffect } from 'react'
 
 const TaskListView = ({savedTasks, setSavedTasks}) => {
 
@@ -12,8 +11,8 @@ const TaskListView = ({savedTasks, setSavedTasks}) => {
   }
 
   const handleChange = (savedTask) => {
-    savedTask.complete = !savedTask.complete
-    patchTask(savedTask.id, savedTask.complete)
+    savedTask.completed = !savedTask.completed
+    patchTask(savedTask.id, savedTask.completed)
     .then(updatedTasks => setSavedTasks(updatedTasks))
     .catch(error => console.log(error))
   }

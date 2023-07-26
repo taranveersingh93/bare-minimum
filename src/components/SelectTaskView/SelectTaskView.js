@@ -113,7 +113,7 @@ const postTask = () => {
     id: currentTask.id,
     category: currentTask.category,
     task: currentTask.task,
-    complete: false
+    completed: false
   };
   if (!savedTasks.find((task) => task.id === acceptedTask.id)) {
     postSavedTask(acceptedTask).then(updatedTasks => {
