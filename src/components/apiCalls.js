@@ -25,7 +25,21 @@ async function fetchSavedTasks() {
   return data
 }
 
-async function postTask(task) {
+async function postSavedTask(task) {
+  const response = await fetch(`http://localhost:3001/api/v1/savedtasks`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(task)
+  })
+  if (!response.ok) {
+    throw new Error(response.statusText)
+  }
+  const data = await response.json()
+  console.log(data)
+  return data
+}
+
+async function deleteSavedTask(id) {
   const response = await fetch(`http://localhost:3001/api/v1/savedtasks`)
   if (!response.ok) {
     throw new Error(response.statusText)
@@ -38,5 +52,6 @@ export {
   fetchAllTasks,
   fetchCategoryTask,
   fetchSavedTasks,
-  postTask
+  postSavedTask,
+  deleteSavedTask
 }
