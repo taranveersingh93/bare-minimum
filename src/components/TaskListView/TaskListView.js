@@ -1,16 +1,24 @@
 import './TaskListView.css'
-import { useState } from 'react'
 import TableRow from '../TableRow/TableRow'
+import { deleteSavedTask, patchTask } from '../apiCalls'
 
-const TaskListView = ({ savedTasks, setSavedTasks}) => {
+const TaskListView = ({savedTasks, setSavedTasks}) => {
 
   const deleteTask = (id) => {
-    const allOtherTasks = savedTasks.filter(saved => saved.id !== id)
-    setSavedTasks(allOtherTasks)
+    deleteSavedTask(id).then(newSaved => {
+      setSavedTasks(newSaved)
+    })
   }
 
-  const rows = savedTasks.sort((a, b) => b.id - a.id).map((savedTask, index) => {
-    return (<TableRow savedTask={savedTask} key={`row-${index}`} deleteTask={deleteTask} savedTasks={savedTasks} setSavedTasks={setSavedTasks} />)
+  const handleChange = (savedTask) => {
+    savedTask.completed = !savedTask.completed
+    patchTask(savedTask.id, savedTask.completed)
+    .then(updatedTasks => setSavedTasks(updatedTasks))
+    .catch(error => console.log(error))
+  }
+
+  const rows = () => savedTasks.sort((a,b) => b.id - a.id).map((savedTask, index) => {
+    return (<TableRow savedTask={savedTask} key={`row-${index}`} deleteTask={deleteTask} handleChange={handleChange}/>)
   }) 
 
   return (
@@ -23,7 +31,7 @@ const TaskListView = ({ savedTasks, setSavedTasks}) => {
         </tr>
       </thead>
       <tbody>
-        {savedTasks.length ? rows : <tr className='no-tasks'>Save a task to view it here!</tr>}
+        {savedTasks.length ? rows() : <tr className='no-tasks'><td>Save a task to view it here!</td></tr>}
       </tbody>
     </table>
   )

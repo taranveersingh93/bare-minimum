@@ -1,20 +1,18 @@
 import './SelectTaskView.css';
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import savedData from '../../dataList/savedData';
-import { fetchAllTasks, fetchCategoryTask } from '../apiCalls'
+import { fetchAllTasks, fetchCategoryTask, postSavedTask } from '../apiCalls'
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import refresh from '../../images/refresh.png';
 import savePurpleIcon from '../../images/save.png';
 import saveGreenIcon from '../../images/save-green.png';
 import saveRedIcon from '../../images/save-red.png';
 
-const SelectTaskView = () => {
+const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
   const { category } = useParams();
 
   const [currentTasks, setCurrentTasks] = useState([]);
   const [tasks, setTasks] = useState([])
-  const [error, setError] = useState({ error: false, response: '' })
   const [unseenTasks, setUnseenTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState('');
   const [tasksToShow, setTasksToShow] = useState(false);
@@ -26,9 +24,8 @@ const SelectTaskView = () => {
   useEffect(() => {
     fetchAllTasks().then(
       data => setTasks(data)
-    ).catch(error => setError({ error: true, response: error })
-    )
-  }, [tasks])
+    ).catch(error => setError({ error: true, response: error }))
+  }, [])
 
   const fetchTasks = (category) => {
     if (category !== 'all') {
@@ -116,9 +113,12 @@ const postTask = () => {
     id: currentTask.id,
     category: currentTask.category,
     task: currentTask.task,
+    completed: false
   };
-  if (!savedData.find((task) => task.id === acceptedTask.id)) {
-    savedData.push(acceptedTask);
+  if (!savedTasks.find((task) => task.id === acceptedTask.id)) {
+    postSavedTask(acceptedTask).then(updatedTasks => {
+      setSavedTasks(updatedTasks)
+    }).catch(error => setError({ error: true, response: error }))
     setSaveSuccessful(true);
     setDisplaySavedResponse(true);
     const allTasks = [...currentTasks];
