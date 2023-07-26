@@ -35,6 +35,8 @@ describe('new tasks (categories) page spec', () => {
       })
     })  
       cy.visit('localhost:3000/exercise').get('.save-icon').click()
+      .get('.task-button').click()
+      .get('tbody tr>td').eq(1).should('contain', 'Do 3 push ups.')
   })
 
   describe('sad path testing', () => {
