@@ -15,7 +15,7 @@ const TaskListView = ({savedTasks, setSavedTasks}) => {
     savedTask.complete = !savedTask.complete
     patchTask(savedTask.id, savedTask.complete)
     .then(updatedTasks => setSavedTasks(updatedTasks))
-    .catch(console.log(error))
+    .catch(error => console.log(error))
   }
 
   const rows = () => savedTasks.sort((a,b) => b.id - a.id).map((savedTask, index) => {
