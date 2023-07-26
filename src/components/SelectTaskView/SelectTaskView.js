@@ -26,9 +26,8 @@ const SelectTaskView = () => {
   useEffect(() => {
     fetchAllTasks().then(
       data => setTasks(data)
-    ).catch(error => setError({ error: true, response: error })
-    )
-  }, [tasks])
+    ).catch(error => setError({ error: true, response: error }))
+  }, [])
 
   const fetchTasks = (category) => {
     if (category !== 'all') {
@@ -118,7 +117,8 @@ const postTask = () => {
     task: currentTask.task,
   };
   if (!savedData.find((task) => task.id === acceptedTask.id)) {
-    savedData.push(acceptedTask);
+    postTask(acceptedTask)
+    // savedData.push(acceptedTask);
     setSaveSuccessful(true);
     setDisplaySavedResponse(true);
     const allTasks = [...currentTasks];
