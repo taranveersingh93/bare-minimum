@@ -12,7 +12,7 @@ const HomeView = () => {
         <Link to='/cleaning' ><section id='cleaning' className='category'>Cleaning</section></Link>
         <Link to='/organization' ><section id='organization' className='category'>Organization</section></Link>
         <Link to='/work' ><section id='work' className='category'>Work</section></Link>
-        <Link to='/mentalcare' ><section id='mentalCare' className='category'>Mental Care</section></Link>
+        <Link to='/mentalCare' ><section id='mentalCare' className='category'>Mental Care</section></Link>
         <Link to='/health' ><section id='health' className='category'>Health</section></Link>
       </div>
     </div>
