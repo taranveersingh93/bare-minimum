@@ -2,8 +2,8 @@ describe('homepage spec', () => {
   beforeEach(() => {
     cy.intercept('GET', 'http://localhost:3001/api/v1/savedtasks', {
       statusCode: 200,
-      body: []
-    }).as('savedTasksGet')
+      body: [],
+    }).as('savedTasksGet');
     cy.visit('localhost:3000');
   });
   it('should have a site title at the top', () => {
@@ -35,12 +35,20 @@ describe('homepage spec', () => {
       health: 'Health',
     };
     it('should render 6 categories', () => {
-      Object.entries(categories).forEach(([catID, catValue]) => {
-        cy.get(`#${catID}`).should('contain', catValue);
+      Object.entries(categories).forEach(([url, category]) => {
+        cy.get(`#${url}`).should('contain', category);
       });
     });
-    Object.values(categories).forEach((category) => {
+    Object.entries(categories).forEach(([url, category]) => {
       it(`should navigate you to the ${category} page if clicked`, () => {
+        cy.intercept('GET', `http://localhost:3001/api/v1/tasks/${url}`, {
+          statusCode: 200,
+          fixture: `${url}TestData`,
+        });
+        cy.intercept('GET', `http://localhost:3001/api/v1/tasks`, {
+          statusCode: 200,
+          fixture: 'testData',
+        });
         cy.get('.categories').contains('.category', category).click();
         cy.get('.new-task-page').contains('h1', category);
       });
