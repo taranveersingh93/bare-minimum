@@ -1,43 +1,62 @@
 describe('homepage spec', () => {
   beforeEach(() => {
+    cy.intercept('GET', 'http://localhost:3001/api/v1/savedtasks', {
+      statusCode: 200,
+      body: [],
+    }).as('savedTasksGet');
     cy.visit('localhost:3000');
   });
   it('should have a site title at the top', () => {
+    cy.wait('@savedTasksGet');
     cy.get('.logo-text').contains('span', 'Bare').get('.logo-text').contains('span', 'Minimum');
   });
   it('should have a link that takes you to your tasks page', () => {
-    cy.get('.toggle-views')
-      .contains('a', 'Task List')
-      .click()
-      .get('thead tr')
+    cy.wait('@savedTasksGet');
+    cy.get('.toggle-views').contains('a', 'Task List').click();
+    cy.get('thead tr')
       .should('contain', 'Category')
       .and('contain', 'Task')
       .and('contain', 'Actions');
   });
   it('should have a short description about the site', () => {
+    cy.wait('@savedTasksGet');
     cy.get('.intro-text').contains(
       'p',
       `"Featherweight tasks for you to embrace the balance between self-care and productivity"`
     );
   });
   it('should have instructions about selecting a category', () => {
+    cy.wait('@savedTasksGet');
     cy.get('.choose-category-title').contains('h1', 'Choose a category from the options below');
   });
   describe('categories on homepage leading to their respective pages', () => {
-    const categories = ['Exercise', 'Cleaning', 'Organization', 'Work', 'Mental Care', 'Health'];
+    const categories = {
+      exercise: 'Exercise',
+      cleaning: 'Cleaning',
+      organization: 'Organization',
+      work: 'Work',
+      mentalCare: 'Mental Care',
+      health: 'Health',
+    };
     it('should render 6 categories', () => {
-      const cypressCategories = cy.get('.categories .category');
-      categories.forEach((cat) => {
-        cypressCategories.should('contain', cat);
+      cy.wait('@savedTasksGet');
+      Object.entries(categories).forEach(([url, category]) => {
+        cy.get(`#${url}`).should('contain', category);
       });
     });
-    categories.forEach((category) => {
+    Object.entries(categories).forEach(([url, category]) => {
       it(`should navigate you to the ${category} page if clicked`, () => {
-        cy.get('.categories')
-          .contains('.category', category)
-          .click()
-          .get('.new-task-page')
-          .contains('h1', category);
+        cy.wait('@savedTasksGet');
+        cy.intercept('GET', `http://localhost:3001/api/v1/tasks/${url}`, {
+          statusCode: 200,
+          fixture: `${url}TestData`,
+        });
+        cy.intercept('GET', `http://localhost:3001/api/v1/tasks`, {
+          statusCode: 200,
+          fixture: 'testData',
+        });
+        cy.get('.categories').contains('.category', category).click();
+        cy.get('.new-task-page').contains('h1', category);
       });
     });
   });
