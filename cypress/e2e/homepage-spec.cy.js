@@ -1,5 +1,9 @@
 describe('homepage spec', () => {
   beforeEach(() => {
+    cy.intercept('GET', 'http://localhost:3001/api/v1/savedtasks', {
+      statusCode: 200,
+      body: []
+    }).as('savedTasksGet')
     cy.visit('localhost:3000');
   });
   it('should have a site title at the top', () => {
