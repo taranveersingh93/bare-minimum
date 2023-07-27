@@ -31,7 +31,7 @@ let savedData = [
   },
   {
     id: 67,
-    category: 'Mental Health',
+    category: 'Mental Care',
     task: 'Watch episode 190 of One Piece'
   },
   {
