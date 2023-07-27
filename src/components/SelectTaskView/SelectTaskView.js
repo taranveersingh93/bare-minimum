@@ -10,7 +10,6 @@ import saveRedIcon from '../../images/save-red.png';
 
 const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
   const { category } = useParams();
-
   const [currentTasks, setCurrentTasks] = useState([]);
   const [tasks, setTasks] = useState([])
   const [unseenTasks, setUnseenTasks] = useState([]);

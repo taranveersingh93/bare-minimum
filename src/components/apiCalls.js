@@ -43,7 +43,7 @@ async function patchTask(id, updatedCompletedStatus) {
   const response = await fetch(`http://localhost:3001/api/v1/savedtasks/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ complete: updatedCompletedStatus })
+    body: JSON.stringify({ completed: updatedCompletedStatus })
   })
   if (!response.ok) {
     throw new Error(response.statusText)
