@@ -13,7 +13,7 @@ const TableRow = ({savedTask, deleteTask, handleChange}) => {
         <td>{savedTask.category}</td>
         <td>{savedTask.task}</td>
         <td className='center-clm'><button onClick={change} className={savedTask.completed ? 'check-task checked' : 'check-task' }/></td>
-        <td className='center-clm'><button onClick={() => deleteTask(savedTask.id)} className='trash'><img src={bin} className='bin'/></button></td>
+        <td className='center-clm'><button onClick={() => deleteTask(savedTask.id)} className='trash'><img alt='trash bin' src={bin} className='bin'/></button></td>
     </tr>
     )
   }
