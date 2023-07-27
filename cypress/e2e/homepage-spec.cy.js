@@ -6,10 +6,8 @@ describe('homepage spec', () => {
     cy.get('.logo-text').contains('span', 'Bare').get('.logo-text').contains('span', 'Minimum');
   });
   it('should have a link that takes you to your tasks page', () => {
-    cy.get('.toggle-views')
-      .contains('a', 'Task List')
-      .click()
-      .get('thead tr')
+    cy.get('.toggle-views').contains('a', 'Task List').click();
+    cy.get('thead tr')
       .should('contain', 'Category')
       .and('contain', 'Task')
       .and('contain', 'Actions');
@@ -24,20 +22,23 @@ describe('homepage spec', () => {
     cy.get('.choose-category-title').contains('h1', 'Choose a category from the options below');
   });
   describe('categories on homepage leading to their respective pages', () => {
-    const categories = ['Exercise', 'Cleaning', 'Organization', 'Work', 'Mental Care', 'Health'];
+    const categories = {
+      exercise: 'Exercise',
+      cleaning: 'Cleaning',
+      organization: 'Organization',
+      work: 'Work',
+      mentalCare: 'Mental Care',
+      health: 'Health',
+    };
     it('should render 6 categories', () => {
-      const cypressCategories = cy.get('.categories .category');
-      categories.forEach((cat) => {
-        cypressCategories.should('contain', cat);
+      Object.entries(categories).forEach(([catID, catValue]) => {
+        cy.get(`#${catID}`).should('contain', catValue);
       });
     });
-    categories.forEach((category) => {
+    Object.values(categories).forEach((category) => {
       it(`should navigate you to the ${category} page if clicked`, () => {
-        cy.get('.categories')
-          .contains('.category', category)
-          .click()
-          .get('.new-task-page')
-          .contains('h1', category);
+        cy.get('.categories').contains('.category', category).click();
+        cy.get('.new-task-page').contains('h1', category);
       });
     });
   });

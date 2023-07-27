@@ -22,8 +22,9 @@ describe('my tasks page spec', () => {
           .invoke('text')
           .then((text) => {
             expect(categories).to.include(text);
-          }).then(() => {
-            done()
+          })
+          .then(() => {
+            done();
           });
       });
     });
@@ -46,16 +47,18 @@ describe('my tasks page spec', () => {
       });
     });
     cy.wait('@getSavedTasks').then(() => {
-      cy.get('.check-task').click().get('.check-task').should('have.class', 'checked');
+      cy.get('.check-task').click();
+      cy.get('.check-task').should('have.class', 'checked');
     });
   });
   it('should delete a task when the trash is clicked', () => {
     cy.intercept('DELETE', 'http://localhost:3001/api/v1/savedtasks/1', {
       statusCode: 201,
-      body: []
+      body: [],
     });
     cy.wait('@getSavedTasks').then(() => {
-      cy.get('.bin').click().get('tbody tr').contains('td', 'Save a task to view it here!')
+      cy.get('.bin').click();
+      cy.get('tbody tr').contains('td', 'Save a task to view it here!');
     });
-  })
+  });
 });

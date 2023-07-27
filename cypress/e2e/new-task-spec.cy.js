@@ -5,7 +5,7 @@ describe('new tasks (categories) page spec', () => {
       statusCode: 200,
       fixture: `testData`,
     });
-  })
+  });
   categories.forEach((category) => {
     const categoryURL = (category.charAt(0).toLowerCase() + category.slice(1)).replace(' ', '');
     it(`should have an h1 of ${category} when at /${categoryURL}`, () => {
@@ -18,26 +18,26 @@ describe('new tasks (categories) page spec', () => {
   });
   it('should POST a task if the save button is clicked', () => {
     cy.intercept('GET', `http://localhost:3001/api/v1/tasks/exercise`, {
-        statusCode: 200,
-        fixture: `exerciseTestData`,
-      });
+      statusCode: 200,
+      fixture: `exerciseTestData`,
+    });
     cy.intercept('POST', 'http://localhost:3001/api/v1/savedtasks', (req) => {
       req.body = {
-        "task": "Do 3 push ups.",
-        "id": 1,
-        "seen": false,
-        "category": "Exercise",
-        "saved": false
-      }
+        task: 'Do 3 push ups.',
+        id: 1,
+        seen: false,
+        category: 'Exercise',
+        saved: false,
+      };
       req.reply({
         statusCode: 201,
-        fixture: 'savedTasks'
-      })
-    })  
-      cy.visit('localhost:3000/exercise').get('.save-icon').click()
-      .get('.task-button').click()
-      .get('tbody tr>td').eq(1).should('contain', 'Do 3 push ups.')
-  })
+        fixture: 'savedTasks',
+      });
+    });
+    cy.visit('localhost:3000/exercise').get('.save-icon').click();
+    cy.get('.task-button').click();
+    cy.get('tbody tr>td').eq(1).should('contain', 'Do 3 push ups.');
+  });
 
   describe('sad path testing', () => {
     categories.forEach((category) => {
