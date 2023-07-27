@@ -9,27 +9,28 @@ describe('my tasks page spec', () => {
   });
 
   it('displays a table with appropriate headings', () => {
+    cy.wait('@getSavedTasks');
     cy.get('thead tr')
       .should('contain', 'Category')
       .and('contain', 'Task')
       .and('contain', 'Actions');
   });
   it('should include one of six categories in the table for each task', (done) => {
-    cy.wait('@getSavedTasks').then(() => {
-      cy.get('tbody tr').each(($row) => {
-        cy.wrap($row)
-          .find('td:first')
-          .invoke('text')
-          .then((text) => {
-            expect(categories).to.include(text);
-          })
-          .then(() => {
-            done();
-          });
-      });
+    cy.wait('@getSavedTasks');
+    cy.get('tbody tr').each(($row) => {
+      cy.wrap($row)
+        .find('td:first')
+        .invoke('text')
+        .then((text) => {
+          expect(categories).to.include(text);
+        })
+        .then(() => {
+          done();
+        });
     });
   });
   it('should mark a task as complete', () => {
+    cy.wait('@getSavedTasks');
     cy.intercept('PATCH', 'http://localhost:3001/api/v1/savedtasks/1', (req) => {
       req.body = {
         completed: 'true',
@@ -52,6 +53,7 @@ describe('my tasks page spec', () => {
     });
   });
   it('should delete a task when the trash is clicked', () => {
+    cy.wait('@getSavedTasks');
     cy.intercept('DELETE', 'http://localhost:3001/api/v1/savedtasks/1', {
       statusCode: 201,
       body: [],

@@ -7,9 +7,11 @@ describe('homepage spec', () => {
     cy.visit('localhost:3000');
   });
   it('should have a site title at the top', () => {
+    cy.wait('@savedTasksGet');
     cy.get('.logo-text').contains('span', 'Bare').get('.logo-text').contains('span', 'Minimum');
   });
   it('should have a link that takes you to your tasks page', () => {
+    cy.wait('@savedTasksGet');
     cy.get('.toggle-views').contains('a', 'Task List').click();
     cy.get('thead tr')
       .should('contain', 'Category')
@@ -17,12 +19,14 @@ describe('homepage spec', () => {
       .and('contain', 'Actions');
   });
   it('should have a short description about the site', () => {
+    cy.wait('@savedTasksGet');
     cy.get('.intro-text').contains(
       'p',
       `"Featherweight tasks for you to embrace the balance between self-care and productivity"`
     );
   });
   it('should have instructions about selecting a category', () => {
+    cy.wait('@savedTasksGet');
     cy.get('.choose-category-title').contains('h1', 'Choose a category from the options below');
   });
   describe('categories on homepage leading to their respective pages', () => {
@@ -35,12 +39,14 @@ describe('homepage spec', () => {
       health: 'Health',
     };
     it('should render 6 categories', () => {
+      cy.wait('@savedTasksGet');
       Object.entries(categories).forEach(([url, category]) => {
         cy.get(`#${url}`).should('contain', category);
       });
     });
     Object.entries(categories).forEach(([url, category]) => {
       it(`should navigate you to the ${category} page if clicked`, () => {
+        cy.wait('@savedTasksGet');
         cy.intercept('GET', `http://localhost:3001/api/v1/tasks/${url}`, {
           statusCode: 200,
           fixture: `${url}TestData`,
