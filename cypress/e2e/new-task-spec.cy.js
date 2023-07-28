@@ -17,10 +17,13 @@ describe('new tasks (categories) page spec', () => {
       cy.intercept('GET', `https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/tasks/${categoryURL}`, {
         statusCode: 200,
         fixture: `${categoryURL}TestData`,
-      }).as('categoryFetch');
+      }).as(`${categoryURL}categoryFetch`);
       
-      cy.visit(`localhost:3000/${categoryURL}`);
-      cy.wait('@categoryFetch').get('.new-task-page').contains('h1', category);
+      cy.visit(`localhost:3000/${categoryURL}`)
+      cy.wait(`@${categoryURL}categoryFetch`)
+      cy.wait('@taskFetch')
+      cy.wait('@getSavedTasks')
+      cy.get('.new-task-page').contains('h1', category);
     });
   });
   it('should POST a task if the save button is clicked', () => {
