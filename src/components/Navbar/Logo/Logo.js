@@ -6,7 +6,7 @@ const Logo = () => {
     <div className="logo">
       <div className='image-container'>
         <div className='logo-image-halo'>
-          <img src={whiteCircleLogo}></img>
+          <img src={whiteCircleLogo} alt="Bare Minimum Logo"></img>
         </div>
       </div>
       <div className='logo-text'> <span className='bare'>Bare</span> <span className='Minimum'>Minimum</span></div>
