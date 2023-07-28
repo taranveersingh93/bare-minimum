@@ -1,7 +1,7 @@
 describe('my tasks page spec', () => {
   const categories = ['Exercise', 'Cleaning', 'Organization', 'Work', 'Mental Care', 'Health'];
   beforeEach(() => {
-    cy.intercept('GET', 'http://localhost:3001/api/v1/savedtasks', {
+    cy.intercept('GET', 'https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/savedtasks', {
       statusCode: 200,
       fixture: 'savedTasks',
     }).as('getSavedTasks');
@@ -31,7 +31,7 @@ describe('my tasks page spec', () => {
   });
   it('should mark a task as complete', () => {
     cy.wait('@getSavedTasks');
-    cy.intercept('PATCH', 'http://localhost:3001/api/v1/savedtasks/1', (req) => {
+    cy.intercept('PATCH', 'https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/savedtasks/1', (req) => {
       req.body = {
         completed: 'true',
       };
@@ -54,7 +54,7 @@ describe('my tasks page spec', () => {
   });
   it('should delete a task when the trash is clicked', () => {
     cy.wait('@getSavedTasks');
-    cy.intercept('DELETE', 'http://localhost:3001/api/v1/savedtasks/1', {
+    cy.intercept('DELETE', 'https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/savedtasks/1', {
       statusCode: 201,
       body: [],
     });
