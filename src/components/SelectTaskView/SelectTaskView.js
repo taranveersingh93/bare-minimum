@@ -20,7 +20,8 @@ const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
   const [saveSuccessful, setSaveSuccessful] = useState(false);
   const [saveResponse, setSaveResponse] = useState('');
   const [saveIcon, setSaveIcon] = useState(savePurpleIcon);
-
+  const [waitingForData, setWaitingForData] = useState(true);
+  
   useEffect(() => {
     fetchAllTasks().then(
       data => setTasks(data)
@@ -73,6 +74,14 @@ const getCurrentTask = (tasks) => {
   processedTask.category = humanizeCategory(unprocessedTask.category);
   setCurrentTask(processedTask);
 };
+
+useEffect(() => {
+  if (currentTask) {
+    setWaitingForData(false);
+  } else {
+    setWaitingForData(true);
+  }
+}, [currentTask]);
 
 useEffect(() => {
   if (unseenTasks.length) {
@@ -158,9 +167,9 @@ return (
   <div className="new-task-page">
     <h1 className="category-title">{currentTask.category}</h1>
     <div className="task-card">
-      {tasksToShow === false && <h1>Loading...</h1>}
+      {!tasksToShow && waitingForData && <h1>Loading...</h1>}
       {(tasksToShow && tasks.length !== 0 && !error.error) && <p className='task-text'>{currentTask.task}</p>}
-      {(!tasksToShow && error.error) && <ErrorMessage />}
+      {(!tasksToShow && !waitingForData) && <ErrorMessage />}
       {error.error && <p className='error-message'>{`We apologize! ${error.response}. Please try again later.`}</p>}
       <p className={displaySavedResponse ? 'save-display saved-confirmation' : 'saved-confirmation'}>
         {saveResponse}
