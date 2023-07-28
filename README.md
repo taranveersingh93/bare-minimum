@@ -6,13 +6,9 @@
 ## Installation Instructions
 In order to clone this application:
 
-- Start by cloning down the [frontend server repository](https://github.com/hvohr/rancid-tomatillos).
-- cd (change directory) into that project and run npm install
-- run npm start and the website will appear in your preferred browsing site.
-- You also have the option to click the [deploy link](https://rancid-tomatillos-9x4j.vercel.app/) for casual viewing
 
 ### Preview of App:
-![App Preview](url)
+
 
 ### Context:
 We are currently in Mod 3 of the Turing Frontend Development Program. A total of 40 hours were spent on this project.
