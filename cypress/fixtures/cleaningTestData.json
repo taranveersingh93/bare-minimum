@@ -3,42 +3,42 @@
       "task": "Dishes. Empty the dish washer, fill the dishwasher, start the dishwasher, or BE THE DISHWASHER.",
       "id": 111,
       "seen": false,
-      "category": "Cleaning",
+      "category": "cleaning",
       "saved": false
   },
   {
       "task": "Wash your bed sheets.",
       "id": 112,
       "seen": false,
-      "category": "Cleaning",
+      "category": "cleaning",
       "saved": false
   },
   {
       "task": "Do a load of laundry.",
       "id": 113,
       "seen": false,
-      "category": "Cleaning",
+      "category": "cleaning",
       "saved": false
   },
   {
       "task": "Vacuum the room you are in (but don't stop there if you are feeling it!)",
       "id": 114,
       "seen": false,
-      "category": "Cleaning",
+      "category": "cleaning",
       "saved": false
   },
   {
       "task": "a",
       "id": 15,
       "seen": false,
-      "category": "Cleaning",
+      "category": "cleaning",
       "saved": false
   },
   {
       "task": "b",
       "id": 116,
       "seen": false,
-      "category": "Cleaning",
+      "category": "cleaning",
       "saved": false
   }
 ]
