@@ -1,20 +1,13 @@
-const humanizeCategory = camelCaseText => {
-  const characterArray = camelCaseText.split("");
-  const humanizedArray = [];
-
-  for (let i = 0; i < characterArray.length; i++) {
-    if (i === 0) {
-      humanizedArray.push(characterArray[i].toUpperCase());
-    } else if (characterArray[i] === characterArray[i].toLowerCase()) {
-      humanizedArray.push(characterArray[i]);
-    } else {
-      humanizedArray.push(" ");
-      humanizedArray.push(characterArray[i]);
-    }
+const formatCategories = (category) => {
+  const replacements = {
+    'exercise': 'Exercise',
+    'health': 'Health',
+    'work': 'Work',
+    'mentalCare': 'Mental Care',
+    'cleaning': 'Cleaning',
+    'organization': 'Organization'
   }
-
-  return (humanizedArray.join(""));
+  return replacements[category]
 }
 
-export default humanizeCategory;
-
+export default formatCategories;

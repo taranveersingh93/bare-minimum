@@ -7,7 +7,7 @@ import refresh from '../../images/refresh.png';
 import savePurpleIcon from '../../images/save.png';
 import saveGreenIcon from '../../images/save-green.png';
 import saveRedIcon from '../../images/save-red.png';
-import humanizeCategory from '../../helperFunctions';
+import formatCategories from '../../helperFunctions';
 
 const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
   const { category } = useParams();
@@ -25,7 +25,7 @@ const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
     fetchAllTasks().then(
       data => setTasks(data)
     ).catch(error => setError({ error: true, response: error }))
-  }, [])
+  })
 
   const fetchTasks = (category) => {
     if (category !== 'all') {
@@ -43,7 +43,7 @@ const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
 
 useEffect(() => {
   fetchTasks(category);
-}, []);
+});
 
 const getUnseenTasks = (tasks) => {
   if (tasks.length !== 0) {
@@ -70,7 +70,7 @@ const getCurrentTask = (tasks) => {
   const randomIndex = Math.floor(Math.random() * tasks.length);
   const unprocessedTask = tasks[randomIndex];
   const processedTask = {...unprocessedTask};
-  processedTask.category = humanizeCategory(unprocessedTask.category);
+  processedTask.category = formatCategories(unprocessedTask.category);
   setCurrentTask(processedTask);
 };
 
