@@ -6,6 +6,7 @@ import SelectTaskView from '../SelectTaskView/SelectTaskView';
 import TaskListView from '../TaskListView/TaskListView'
 import { useEffect, useState } from 'react';
 import { fetchSavedTasks } from '../apiCalls';
+import PageNotFound from '../PageNotFound/PageNotFound';
 
 const App = () => {
   const [savedTasks, setSavedTasks] = useState([])
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/:category' element={<SelectTaskView savedTasks={savedTasks} setSavedTasks={setSavedTasks} error={error} setError={setError}/>} />
           <Route path='/' element={<HomeView />} />
           <Route path='/tasklist' element={<TaskListView savedTasks={savedTasks} setSavedTasks={setSavedTasks}/>} />
+          <Route path='*' element={<PageNotFound />}/>
         </Routes>
       </div>
     </>
