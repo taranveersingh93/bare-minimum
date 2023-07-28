@@ -1,5 +1,5 @@
 async function fetchAllTasks() {
-  const response = await fetch('http://localhost:3001/api/v1/tasks')
+  const response = await fetch('https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/tasks')
   if (!response.ok) {
     throw new Error(response.statusText)
   }
@@ -8,7 +8,7 @@ async function fetchAllTasks() {
 }
 
 async function fetchCategoryTask(category) {
-  const response = await fetch(`http://localhost:3001/api/v1/tasks/${category}`)
+  const response = await fetch(`https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/tasks/${category}`)
   if (!response.ok) {
     throw new Error(response.statusText)
   }
@@ -17,7 +17,7 @@ async function fetchCategoryTask(category) {
 }
 
 async function fetchSavedTasks() {
-  const response = await fetch(`http://localhost:3001/api/v1/savedtasks`)
+  const response = await fetch(`https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/savedtasks`)
   if (!response.ok) {
     throw new Error(response.statusText)
   }
@@ -26,7 +26,7 @@ async function fetchSavedTasks() {
 }
 
 async function postSavedTask(task) {
-  const response = await fetch(`http://localhost:3001/api/v1/savedtasks`, {
+  const response = await fetch(`https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/savedtasks`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(task)
@@ -35,12 +35,11 @@ async function postSavedTask(task) {
     throw new Error(response.statusText)
   }
   const data = await response.json()
-  console.log(data)
   return data
 }
 
 async function patchTask(id, updatedCompletedStatus) {
-  const response = await fetch(`http://localhost:3001/api/v1/savedtasks/${id}`, {
+  const response = await fetch(`https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/savedtasks/${id}`, {
     method: 'PATCH',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ completed: updatedCompletedStatus })
@@ -53,7 +52,7 @@ async function patchTask(id, updatedCompletedStatus) {
 }
 
 async function deleteSavedTask(id) {
-  const response = await fetch(`http://localhost:3001/api/v1/savedtasks/${id}`, {
+  const response = await fetch(`https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/savedtasks/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' }
   })

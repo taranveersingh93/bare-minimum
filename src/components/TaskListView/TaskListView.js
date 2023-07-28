@@ -13,7 +13,9 @@ const TaskListView = ({savedTasks, setSavedTasks}) => {
   const handleChange = (savedTask) => {
     savedTask.completed = !savedTask.completed
     patchTask(savedTask.id, savedTask.completed)
-    .then(updatedTasks => setSavedTasks(updatedTasks))
+    .then(updatedTasks => {
+      setSavedTasks(updatedTasks)
+    })
     .catch(error => console.log(error))
   }
 

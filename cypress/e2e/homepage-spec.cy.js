@@ -1,6 +1,6 @@
 describe('homepage spec', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'http://localhost:3001/api/v1/savedtasks', {
+    cy.intercept('GET', 'https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/savedtasks', {
       statusCode: 200,
       body: [],
     }).as('savedTasksGet');
@@ -47,11 +47,11 @@ describe('homepage spec', () => {
     Object.entries(categories).forEach(([url, category]) => {
       it(`should navigate you to the ${category} page if clicked`, () => {
         cy.wait('@savedTasksGet');
-        cy.intercept('GET', `http://localhost:3001/api/v1/tasks/${url}`, {
+        cy.intercept('GET', `https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/tasks/${url}`, {
           statusCode: 200,
           fixture: `${url}TestData`,
         });
-        cy.intercept('GET', `http://localhost:3001/api/v1/tasks`, {
+        cy.intercept('GET', `https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/tasks`, {
           statusCode: 200,
           fixture: 'testData',
         });

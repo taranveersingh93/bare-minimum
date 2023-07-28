@@ -7,10 +7,10 @@ import refresh from '../../images/refresh.png';
 import savePurpleIcon from '../../images/save.png';
 import saveGreenIcon from '../../images/save-green.png';
 import saveRedIcon from '../../images/save-red.png';
+import humanizeCategory from '../../helperFunctions';
 
 const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
   const { category } = useParams();
-
   const [currentTasks, setCurrentTasks] = useState([]);
   const [tasks, setTasks] = useState([])
   const [unseenTasks, setUnseenTasks] = useState([]);
@@ -67,8 +67,11 @@ useEffect(() => {
 }, [currentTasks]);
 
 const getCurrentTask = (tasks) => {
-  let randomIndex = Math.floor(Math.random() * tasks.length);
-  setCurrentTask(tasks[randomIndex]);
+  const randomIndex = Math.floor(Math.random() * tasks.length);
+  const unprocessedTask = tasks[randomIndex];
+  const processedTask = {...unprocessedTask};
+  processedTask.category = humanizeCategory(unprocessedTask.category);
+  setCurrentTask(processedTask);
 };
 
 useEffect(() => {
@@ -157,7 +160,7 @@ return (
     <div className="task-card">
       {tasksToShow === false && <h1>Loading...</h1>}
       {(tasksToShow && tasks.length !== 0 && !error.error) && <p className='task-text'>{currentTask.task}</p>}
-      {(!tasksToShow && !error.error) && <ErrorMessage />}
+      {(!tasksToShow && error.error) && <ErrorMessage />}
       {error.error && <p className='error-message'>{`We apologize! ${error.response}. Please try again later.`}</p>}
       <p className={displaySavedResponse ? 'save-display saved-confirmation' : 'saved-confirmation'}>
         {saveResponse}
