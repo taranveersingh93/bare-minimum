@@ -7,7 +7,12 @@ import refresh from '../../images/refresh.png';
 import savePurpleIcon from '../../images/save.png';
 import saveGreenIcon from '../../images/save-green.png';
 import saveRedIcon from '../../images/save-red.png';
+<<<<<<< HEAD
 import formatCategories from '../../helperFunctions';
+=======
+import humanizeCategory from '../../helperFunctions';
+import PropTypes from 'prop-types';
+>>>>>>> 831a5772a95bf1d1a45da7fa3871676393e806bb
 
 const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
   const { category } = useParams();
@@ -187,5 +192,10 @@ return (
   </div>
 );
 };
+
+SelectTaskView.propTypes = {
+  error: PropTypes.object,
+  savedTasks: PropTypes.array
+}
 
 export default SelectTaskView;
