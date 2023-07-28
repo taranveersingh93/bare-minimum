@@ -21,14 +21,14 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <div className='main-view'>
+      <main>
         <Routes>
           <Route path='/:category' element={<SelectTaskView savedTasks={savedTasks} setSavedTasks={setSavedTasks} error={error} setError={setError}/>} />
           <Route path='/' element={<HomeView />} />
           <Route path='/tasklist' element={<TaskListView savedTasks={savedTasks} setSavedTasks={setSavedTasks}/>} />
           <Route path='*' element={<PageNotFound />}/>
         </Routes>
-      </div>
+      </main>
     </>
   )
 }
