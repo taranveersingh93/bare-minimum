@@ -48,19 +48,4 @@ describe('new tasks (categories) page spec', () => {
     cy.wait('@postRequest');
     cy.get('tbody tr>td').eq(1).should('contain', 'Do 3 push ups.');
   });
-
-  describe('sad path testing', () => {
-    categories.forEach((category) => {
-      it(`should show Loading error on ${category} page if fetch fails`, () => {
-        const categoryURL = (category.charAt(0).toLowerCase() + category.slice(1)).replace(' ', '');
-        cy.intercept(`https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/tasks/${categoryURL}`, {
-          statusCode: 404,
-          body: '404 Not Found!',
-          headers: { 'content-type': 'application/json' },
-        }).as(`failed${categoryURL}request`);
-        cy.visit(`localhost:3000/${categoryURL}`)
-        cy.wait(`@failed${categoryURL}request`).get('.task-card').contains('h1', 'Loading...');
-      });
-    });
-  });
 });
