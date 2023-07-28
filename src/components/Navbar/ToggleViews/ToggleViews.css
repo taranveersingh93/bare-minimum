@@ -8,5 +8,5 @@
 }
 
 .active {
-  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.7), 2px -2px 0 rgba(255, 255, 255, 0.7), -2px 2px 0 rgba(255, 255, 255, 0.7), -2px -2px 0 rgba(255, 255, 255, 0.7), 2px 0px 0 rgba(255, 255, 255, 0.7), 0px 2px 0 rgba(255, 255, 255, 0.7), -2px 0px 0 rgba(255, 255, 255, 0.7), 0px -2px 0 rgba(255, 255, 255, 0.7);
+  text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
 }

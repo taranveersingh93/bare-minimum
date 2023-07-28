@@ -8,7 +8,9 @@
 }
 
 .intro-text {
+  font-family: 'kalam', cursive;
   text-align: center;
+  font-weight: 100;
   width: 80%;
   color: rgb(40, 34, 108);
   font-size: 1.5rem;
