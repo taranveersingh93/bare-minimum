@@ -1,7 +1,7 @@
 # Bare Minimum
 
 ## Abstract: 
-Welcome to Rancid Tomatillos! Want to find a fun movie and don't know where to peruse? Well, our application is the one for you! On the front page, you will immediately see a list of movies, which are available to click on for more data information. We have information regarding its run time, rating, genre specificity, and more! If you change your mind about one of them, you have the option to go home by clicking the 'Home' Button in the dashboard. We hope we helped in your movie-hunting endevours!
+
 
 ## Installation Instructions
 In order to clone this application:
@@ -18,8 +18,10 @@ In order to clone this application:
 We are currently in Mod 3 of the Turing Frontend Development Program. A total of 40 hours were spent on this project.
 
 ### Developers:
-- Hollis Vohr - [Github](https://github.com/hvohr) - [LinkedIn](https://www.linkedin.com/in/hollisvohr/)
--
+- Hollis Vohr - [Github](https://github.com/hvohr)
+- Calli Herrmann - [Github] (https://github.com/CaliHam)
+- Taranveer Singh - [Github](https://github.com/taranveersingh93) 
+- Seth Burns - [Github] (https://github.com/SethBurns)
 
 ### Learning Goals:
 - Utilize foundational React concepts
@@ -27,11 +29,11 @@ We are currently in Mod 3 of the Turing Frontend Development Program. A total of
 - Implement React Router
 - Write DRY, reusable code that follows SRP and trends toward function purity
 - Make network requests to retrieve data from the server and post data from the server.
--  
+- Utilize ExpressJS to create a functioning backend database and server-side operation handling. 
 - Maintain proper git workflow and practices.
 
 ### Tech Stack
-- JavaScript, CSS, HTML, Cypress, Webpack, React, React Router, FETCH API's
+- JavaScript, CSS/HTML, Cypress, Webpack, React, React Router, FETCH API's, Express JS, Knex, Cors
 
 #### Dependencies
-npm i is-url
+npm i
