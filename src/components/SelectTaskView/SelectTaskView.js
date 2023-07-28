@@ -167,11 +167,11 @@ return (
       </p>
       {(tasksToShow && tasks.length !== 0) && <div className="task-card-buttons">
         <div className='refresh-icon-container icon-container' onClick={markTaskRead}>
-          <img src={refresh} className='refresh-icon card-icon' />
+          <img src={refresh} className='refresh-icon card-icon' alt="refresh icon"/>
           <p className='icon-text refresh-text'>New task</p>
         </div>
         <div className='icon-container' onClick={postTask}>
-          <img src={saveIcon} className='save-icon card-icon' />
+          <img src={saveIcon} className='save-icon card-icon' alt="save icon"/>
           <p className='icon-text save-text'>Save task</p>
         </div>
       </div>}
