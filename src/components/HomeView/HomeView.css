@@ -53,3 +53,13 @@ a {
   background-color: rgba(255, 255, 255, 0.75);
   cursor: pointer;
 }
+
+@media (max-width: 515px) {
+  .categories {
+    width: 250px;
+  }
+
+  .choose-category-title {
+    width: 250px;
+  }
+}
