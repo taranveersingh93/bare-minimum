@@ -25,7 +25,7 @@ const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
     fetchAllTasks().then(
       data => setTasks(data)
     ).catch(error => setError({ error: true, response: error }))
-  })
+  }, [])
 
   const fetchTasks = (category) => {
     if (category !== 'all') {
@@ -43,7 +43,7 @@ const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
 
 useEffect(() => {
   fetchTasks(category);
-});
+}, []);
 
 const getUnseenTasks = (tasks) => {
   if (tasks.length !== 0) {
@@ -160,7 +160,7 @@ return (
     <div className="task-card">
       {tasksToShow === false && <h1>Loading...</h1>}
       {(tasksToShow && tasks.length !== 0 && !error.error) && <p className='task-text'>{currentTask.task}</p>}
-      {(!tasksToShow && error.error) && <ErrorMessage />}
+      {(!tasksToShow && !error.error) && <ErrorMessage />}
       {error.error && <p className='error-message'>{`We apologize! ${error.response}. Please try again later.`}</p>}
       <p className={displaySavedResponse ? 'save-display saved-confirmation' : 'saved-confirmation'}>
         {saveResponse}
