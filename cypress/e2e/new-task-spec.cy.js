@@ -13,7 +13,7 @@ describe('new tasks (categories) page spec', () => {
   });
   categories.forEach((category) => {
     const categoryURL = (category.charAt(0).toLowerCase() + category.slice(1)).replace(' ', '');
-    it(`should have an h1 of ${category} when at /${categoryURL}`, () => {
+    it(`should have an h3 of ${category} when at /${categoryURL}`, () => {
       cy.intercept('GET', `https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/tasks/${categoryURL}`, {
         statusCode: 200,
         fixture: `${categoryURL}TestData`,
