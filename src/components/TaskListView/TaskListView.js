@@ -1,6 +1,7 @@
 import './TaskListView.css'
 import TableRow from '../TableRow/TableRow'
 import { deleteSavedTask, patchTask } from '../apiCalls'
+import PropTypes from 'prop-types';
 
 const TaskListView = ({savedTasks, setSavedTasks}) => {
 
@@ -37,6 +38,10 @@ const TaskListView = ({savedTasks, setSavedTasks}) => {
       </tbody>
     </table>
   )
+}
+
+TaskListView.propTypes = {
+  savedTasks: PropTypes.array
 }
 
 export default TaskListView
