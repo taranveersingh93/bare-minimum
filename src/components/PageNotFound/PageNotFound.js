@@ -1,5 +1,5 @@
 import './PageNotFound.css'
-import bear from '../../images/pagenotfoundbear.jpg'
+import bear from '../../images/pagenotfoundbear.svg'
 
 const PageNotFound = () => {
   return (
