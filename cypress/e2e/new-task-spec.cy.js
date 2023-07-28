@@ -20,8 +20,10 @@ describe('new tasks (categories) page spec', () => {
       }).as(`${categoryURL}categoryFetch`);
       
       cy.visit(`localhost:3000/${categoryURL}`)
-      .wait('@taskFetch').wait('@getSavedTasks')
-      .wait(`@${categoryURL}categoryFetch`).get('.new-task-page').contains('h1', category);
+      cy.wait(`@${categoryURL}categoryFetch`)
+      cy.wait('@taskFetch')
+      cy.wait('@getSavedTasks')
+      cy.get('.new-task-page').contains('h1', category);
     });
   });
   it('should POST a task if the save button is clicked', () => {
