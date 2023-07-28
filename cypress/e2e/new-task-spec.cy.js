@@ -57,7 +57,6 @@ describe('new tasks (categories) page spec', () => {
           statusCode: 404,
           body: '404 Not Found!',
           headers: { 'content-type': 'application/json' },
-          // delayMs: 100,
         }).as(`failed${categoryURL}request`);
         cy.visit(`localhost:3000/${categoryURL}`)
         cy.wait(`@failed${categoryURL}request`).get('.task-card').contains('h1', 'Loading...');
