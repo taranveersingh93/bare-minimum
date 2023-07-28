@@ -39,4 +39,8 @@ const TaskListView = ({savedTasks, setSavedTasks}) => {
   )
 }
 
+TaskListView.propTypes = {
+  savedTasks
+}
+
 export default TaskListView
