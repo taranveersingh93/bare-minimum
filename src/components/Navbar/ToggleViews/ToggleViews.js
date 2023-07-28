@@ -3,10 +3,10 @@ import './ToggleViews.css'
 
 const ToggleViews = () => {
   return (
-    <div className="toggle-views">
-      <NavLink to='/'><p>Home</p></NavLink>
-      <NavLink to='/tasklist'><p>Task List</p></NavLink>
-    </div>
+    <nav className="toggle-views">
+      <NavLink to='/'>Home</NavLink>
+      <NavLink to='/tasklist'>Task List</NavLink>
+    </nav>
   )
 }
 
