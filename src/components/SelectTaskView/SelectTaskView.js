@@ -170,9 +170,8 @@ return (
     <div className="task-card">
       {!tasksToShow && waitingForData && <h1>Loading...</h1>}
       {(tasksToShow && tasks.length !== 0 && !error.error) && <p className='task-text'>{currentTask.task}</p>}
-      {(!tasksToShow && !waitingForData) && <ErrorMessage message={"You have saved all tasks. No more tasks to show."}/>}
-      {(!tasksToShow && waitingForData && error.error) && <ErrorMessage message={"Something went wrong."}/>}
-      {error.error && <p className='error-message'>{`We apologize! ${error.response}. Please try again later.`}</p>}
+      {(!tasksToShow && !waitingForData && !error.error) && <ErrorMessage message={"You have saved all tasks. No more tasks to show."}/>}
+      {(!tasksToShow && !waitingForData && error.error) && <ErrorMessage message={`We apologize! ${error.response}. Please try again later.`}/>}
       <p className={displaySavedResponse ? 'save-display saved-confirmation' : 'saved-confirmation'}>
         {saveResponse}
       </p>
