@@ -15,7 +15,6 @@ const TaskListView = ({savedTasks, setSavedTasks}) => {
     patchTask(savedTask.id, savedTask.completed)
     .then(updatedTasks => {
       setSavedTasks(updatedTasks)
-      console.log(savedTasks)
     })
     .catch(error => console.log(error))
   }

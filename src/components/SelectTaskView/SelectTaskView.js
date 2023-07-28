@@ -7,6 +7,7 @@ import refresh from '../../images/refresh.png';
 import savePurpleIcon from '../../images/save.png';
 import saveGreenIcon from '../../images/save-green.png';
 import saveRedIcon from '../../images/save-red.png';
+import humanizeCategory from '../../helperFunctions';
 
 const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
   const { category } = useParams();
@@ -66,8 +67,11 @@ useEffect(() => {
 }, [currentTasks]);
 
 const getCurrentTask = (tasks) => {
-  let randomIndex = Math.floor(Math.random() * tasks.length);
-  setCurrentTask(tasks[randomIndex]);
+  const randomIndex = Math.floor(Math.random() * tasks.length);
+  const unprocessedTask = tasks[randomIndex];
+  const processedTask = {...unprocessedTask};
+  processedTask.category = humanizeCategory(unprocessedTask.category);
+  setCurrentTask(processedTask);
 };
 
 useEffect(() => {
