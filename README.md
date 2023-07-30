@@ -1,9 +1,7 @@
 # Bare Minimum
 
 ## Abstract: 
-Welcome to Bare Minimum! Want to book a room with our establishment? Well, my application is the one for you! The Clementine Hotel is your go-to hotel booking website with the finest accommodations possible. We are very secure, so you have to log in with your designated username and password in order to view your previous bookings. You can make a new booking by selecting a date and a room type. By clicking on book your new booking will finalize and you can view it on your dashboard! Your total cost can also be viewed on the dashboard. When you are done, you can logout and feel safe knowing your information will be there when you log back in! Thank you for staying at the Clementine Hotel!
-
-
+Welcome to Bare Minimum! Feeling discouraged about completing large scale tasks and projects? Well, our application is the one for you! Bare Minimum is your go to organization website that breaks down tasks into small simple ones. A user can choose from any of the categories and be presented with a task that is smaller and more easily manageable! If the user feels like the task is something they can accomplish, we have the option to save this task to a personal list. This way, a user can view all their saved tasks and mark them when they are complete! A user can also decide to delete a task from that list when they no longer wish to complete it. Our app is fully functioning on both your computer or your phone, making it easy to complete these tasks on the go! We hope you enjoy Bare Minimum!
 
 ## Installation Instructions
 In order to clone this application:
@@ -16,6 +14,7 @@ In order to clone this application:
 - Once that is finished run `npm start`. You will see a local host link in your terminal
 - You will then clone down this repository and `cd` into the bare minimum file.
 - Run `npm install` and then `npm start`
+- [Deploy Link](link)
 
 ### Preview of App:
 ![preview1](https://user-images.githubusercontent.com/123392693/257081001-e2570bc0-5810-4184-aafa-c0f85ac3a902.jpeg)
