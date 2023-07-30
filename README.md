@@ -7,7 +7,15 @@ Welcome to Bare Minimum! Want to book a room with our establishment? Well, my ap
 
 ## Installation Instructions
 In order to clone this application:
-- 
+- You will need to start by cloning down the [backend server repository](https://github.com/SethBurns/bare-minimum-api).
+- `cd` (change directory) into that project and run npm install
+- run npm start and open the localhost link that will appear in terminal. Keep this running in the background when viewing the website.
+- After, clone this repository using the SSH key into your local machine
+- cd (change directory) into the project
+- Run `npm install`
+- Once that is finished run `npm start`. You will see a local host link in your terminal
+- You will then clone down this repository and `cd` into the bare minimum file.
+- Run `npm install` and then `npm start`
 
 ### Preview of App:
 ![preview1](https://user-images.githubusercontent.com/123392693/257081001-e2570bc0-5810-4184-aafa-c0f85ac3a902.jpeg)
