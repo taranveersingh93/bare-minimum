@@ -17,10 +17,13 @@ describe('new tasks (categories) page spec', () => {
       cy.intercept('GET', `https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/tasks/${categoryURL}`, {
         statusCode: 200,
         fixture: `${categoryURL}TestData`,
-      }).as('categoryFetch');
+      }).as(`${categoryURL}categoryFetch`);
       
-      cy.visit(`localhost:3000/${categoryURL}`);
-      cy.wait('@categoryFetch').get('.new-task-page').contains('h1', category);
+      cy.visit(`localhost:3000/${categoryURL}`)
+      cy.wait(`@${categoryURL}categoryFetch`)
+      cy.wait('@taskFetch')
+      cy.wait('@getSavedTasks')
+      cy.get('.new-task-page').contains('h1', category);
     });
   });
   it('should POST a task if the save button is clicked', () => {
@@ -48,4 +51,24 @@ describe('new tasks (categories) page spec', () => {
     cy.wait('@postRequest');
     cy.get('tbody tr>td').eq(1).should('contain', 'Do 3 push ups.');
   });
+<<<<<<< HEAD
+=======
+
+  describe('sad path testing', () => {
+    categories.forEach((category) => {
+      it(`should show Loading error on ${category} page if fetch fails`, () => {
+        const categoryURL = (category.charAt(0).toLowerCase() + category.slice(1)).replace(' ', '');
+        cy.intercept(`https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/tasks/${categoryURL}`, {
+          statusCode: 404,
+          body: '404 Not Found!',
+          headers: { 'content-type': 'application/json' },
+        }).as(`failed${categoryURL}request`);
+        cy.visit(`localhost:3000/${categoryURL}`)
+        cy.wait('@taskFetch')
+        cy.wait('@getSavedTasks')
+        cy.wait(`@failed${categoryURL}request`).get('.task-card').contains('p', 'We apologize!');
+      });
+    });
+  });
+>>>>>>> 3d1ceb05cef85eefbbe741a3d48dc3341ce1dec5
 });

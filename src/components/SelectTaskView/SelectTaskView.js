@@ -21,18 +21,27 @@ const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
   const [saveSuccessful, setSaveSuccessful] = useState(false);
   const [saveResponse, setSaveResponse] = useState('');
   const [saveIcon, setSaveIcon] = useState(savePurpleIcon);
-
+  const [waitingForData, setWaitingForData] = useState(true);
+  
   useEffect(() => {
     fetchAllTasks().then(
-      data => setTasks(data)
-    ).catch(error => setError({ error: true, response: error }))
+      data => {
+        setTasks(data)
+        setWaitingForData(false);
+      }
+    ).catch(error => {
+      setWaitingForData(false);
+      setError({ error: true, response: error })
+    })
   }, [])
 
   const fetchTasks = (category) => {
     if (category !== 'all') {
       fetchCategoryTask(category).then(
         data => setCurrentTasks(data)
-      ).catch(error => setError({ error: true, response: error }))
+      ).catch(error => {
+        setError({ error: true, response: error })
+      })
     } else {
   let allTasks = [];
   tasks.forEach((task) => {
@@ -159,10 +168,10 @@ return (
   <div className="new-task-page">
     <h1 className="category-title">{currentTask.category}</h1>
     <div className="task-card">
-      {tasksToShow === false && <h1>Loading...</h1>}
+      {!tasksToShow && waitingForData && <h1>Loading...</h1>}
       {(tasksToShow && tasks.length !== 0 && !error.error) && <p className='task-text'>{currentTask.task}</p>}
-      {(!tasksToShow && !error.error) && <ErrorMessage />}
-      {error.error && <p className='error-message'>{`We apologize! ${error.response}. Please try again later.`}</p>}
+      {(!tasksToShow && !waitingForData && !error.error) && <ErrorMessage message={"You have saved all tasks. No more tasks to show."}/>}
+      {(!tasksToShow && !waitingForData && error.error) && <ErrorMessage message={`We apologize! ${error.response}. Please try again later.`}/>}
       <p className={displaySavedResponse ? 'save-display saved-confirmation' : 'saved-confirmation'}>
         {saveResponse}
       </p>

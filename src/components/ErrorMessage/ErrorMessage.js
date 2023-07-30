@@ -1,9 +1,9 @@
 import './ErrorMessage.css'
 
-const ErrorMessage = () => {
+const ErrorMessage = ({message}) => {
   return (
   <p className="error-message">
-    Sorry, you've saved all the tasks in this category.
+    {message}
   </p>
   )
 }
