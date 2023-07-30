@@ -8,6 +8,8 @@ In order to clone this application:
 
 
 ### Preview of App:
+![bare-min-phone-gif](https://github.com/SethBurns/bare-minimum/assets/126219151/d9c07fb8-5acf-42fa-95a8-87cd808a42c3) <br>
+![bare-min-gif](https://github.com/SethBurns/bare-minimum/assets/126219151/246c9c77-b3cc-4225-806a-9c929b872dcc)
 
 
 ### Context:
@@ -15,9 +17,9 @@ We are currently in Mod 3 of the Turing Frontend Development Program. A total of
 
 ### Developers:
 - Hollis Vohr - [Github](https://github.com/hvohr)
-- Calli Herrmann - [Github] (https://github.com/CaliHam)
+- Calli Herrmann - [Github](https://github.com/CaliHam)
 - Taranveer Singh - [Github](https://github.com/taranveersingh93) 
-- Seth Burns - [Github] (https://github.com/SethBurns)
+- Seth Burns - [Github](https://github.com/SethBurns)
 
 ### Learning Goals:
 - Utilize foundational React concepts
