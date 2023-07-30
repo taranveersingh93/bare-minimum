@@ -14,11 +14,11 @@ In order to clone this application:
 - Once that is finished run `npm start`. You will see a local host link in your terminal
 - You will then clone down this repository and `cd` into the bare minimum file.
 - Run `npm install` and then `npm start`
-- [Deploy Link](link)
+- [Deploy Link](https://bare-minimum.vercel.app/)
 
 ### Preview of App:
-![preview1](https://user-images.githubusercontent.com/123392693/257081001-e2570bc0-5810-4184-aafa-c0f85ac3a902.jpeg)
-![preview2](https://user-images.githubusercontent.com/123392693/257081012-f921b28a-4a16-410d-be35-c7a720b52fdc.jpeg)
+![bare-min-phone-gif](https://github.com/SethBurns/bare-minimum/assets/126219151/d9c07fb8-5acf-42fa-95a8-87cd808a42c3) <br>
+![bare-min-gif](https://github.com/SethBurns/bare-minimum/assets/126219151/246c9c77-b3cc-4225-806a-9c929b872dcc)
 
 
 ### Context:
