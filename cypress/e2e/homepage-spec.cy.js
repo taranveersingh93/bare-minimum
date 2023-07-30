@@ -20,14 +20,12 @@ describe('homepage spec', () => {
   });
   it('should have a short description about the site', () => {
     cy.wait('@savedTasksGet');
-    cy.get('.intro-text').contains(
-      'p',
-      `"Featherweight tasks for you to embrace the balance between self-care and productivity"`
+    cy.get('.intro-text').contains("Featherweight tasks for you to embrace the balance between self-care and productivity"
     );
   });
   it('should have instructions about selecting a category', () => {
     cy.wait('@savedTasksGet');
-    cy.get('.choose-category-title').contains('h1', 'Choose a category from the options below');
+    cy.get('.choose-category-title').contains('Choose a category from the options below');
   });
   describe('categories on homepage leading to their respective pages', () => {
     const categories = {

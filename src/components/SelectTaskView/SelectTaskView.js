@@ -7,10 +7,10 @@ import refresh from '../../images/refresh.png';
 import savePurpleIcon from '../../images/save.png';
 import saveGreenIcon from '../../images/save-green.png';
 import saveRedIcon from '../../images/save-red.png';
-import humanizeCategory from '../../helperFunctions';
+import formatCategories from '../../helperFunctions';
 import PropTypes from 'prop-types';
 
-const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
+const SelectTaskView = ({savedTasks, setSavedTasks}) => {
   const { category } = useParams();
   const [currentTasks, setCurrentTasks] = useState([]);
   const [tasks, setTasks] = useState([])
@@ -22,6 +22,7 @@ const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
   const [saveResponse, setSaveResponse] = useState('');
   const [saveIcon, setSaveIcon] = useState(savePurpleIcon);
   const [waitingForData, setWaitingForData] = useState(true);
+  const [error, setError] = useState({ error: false, response: '' })
   
   useEffect(() => {
     fetchAllTasks().then(
@@ -80,7 +81,7 @@ const getCurrentTask = (tasks) => {
   const randomIndex = Math.floor(Math.random() * tasks.length);
   const unprocessedTask = tasks[randomIndex];
   const processedTask = {...unprocessedTask};
-  processedTask.category = humanizeCategory(unprocessedTask.category);
+  processedTask.category = formatCategories(unprocessedTask.category);
   setCurrentTask(processedTask);
 };
 
@@ -177,11 +178,11 @@ return (
       </p>
       {(tasksToShow && tasks.length !== 0) && <div className="task-card-buttons">
         <div className='refresh-icon-container icon-container' onClick={markTaskRead}>
-          <img src={refresh} className='refresh-icon card-icon' />
+          <img src={refresh} className='refresh-icon card-icon' alt="refresh icon"/>
           <p className='icon-text refresh-text'>New task</p>
         </div>
         <div className='icon-container' onClick={postTask}>
-          <img src={saveIcon} className='save-icon card-icon' />
+          <img src={saveIcon} className='save-icon card-icon' alt="save icon"/>
           <p className='icon-text save-text'>Save task</p>
         </div>
       </div>}
