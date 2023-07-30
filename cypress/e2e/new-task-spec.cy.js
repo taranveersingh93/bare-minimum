@@ -62,7 +62,9 @@ describe('new tasks (categories) page spec', () => {
           headers: { 'content-type': 'application/json' },
         }).as(`failed${categoryURL}request`);
         cy.visit(`localhost:3000/${categoryURL}`)
-        cy.wait(`@failed${categoryURL}request`).get('.task-card').contains('h1', 'Loading...');
+        cy.wait('@taskFetch')
+        cy.wait('@getSavedTasks')
+        cy.wait(`@failed${categoryURL}request`).get('.task-card').contains('p', 'We apologize!');
       });
     });
   });
