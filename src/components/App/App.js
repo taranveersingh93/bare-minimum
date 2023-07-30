@@ -10,12 +10,15 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 
 const App = () => {
   const [savedTasks, setSavedTasks] = useState([])
-  const [error, setError] = useState({ error: false, response: '' })
+  const [serverError, setServerError] = useState(false)
 
   useEffect(() => {
     fetchSavedTasks().then(
-      data => setSavedTasks(data)
-    ).catch(error => setError({ error: true, response: error }))
+      data => {
+        setSavedTasks(data)
+        setServerError(false)
+      }
+    ).catch(error => setServerError(true))
   }, [])
 
   return (
@@ -23,8 +26,8 @@ const App = () => {
       <Navbar />
       <main>
         <Routes>
-          <Route path='/:category' element={<SelectTaskView savedTasks={savedTasks} setSavedTasks={setSavedTasks} error={error} setError={setError}/>} />
-          <Route path='/' element={<HomeView />} />
+          <Route path='/:category' element={<SelectTaskView savedTasks={savedTasks} setSavedTasks={setSavedTasks}/>} />
+          <Route path='/' element={<HomeView serverError={serverError}/>} />
           <Route path='/tasklist' element={<TaskListView savedTasks={savedTasks} setSavedTasks={setSavedTasks}/>} />
           <Route path='*' element={<PageNotFound />}/>
         </Routes>

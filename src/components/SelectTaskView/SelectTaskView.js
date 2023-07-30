@@ -10,7 +10,7 @@ import saveRedIcon from '../../images/save-red.png';
 import formatCategories from '../../helperFunctions';
 import PropTypes from 'prop-types';
 
-const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
+const SelectTaskView = ({savedTasks, setSavedTasks}) => {
   const { category } = useParams();
   const [currentTasks, setCurrentTasks] = useState([]);
   const [tasks, setTasks] = useState([])
@@ -22,6 +22,7 @@ const SelectTaskView = ({savedTasks, setSavedTasks, error, setError}) => {
   const [saveResponse, setSaveResponse] = useState('');
   const [saveIcon, setSaveIcon] = useState(savePurpleIcon);
   const [waitingForData, setWaitingForData] = useState(true);
+  const [error, setError] = useState({ error: false, response: '' })
   
   useEffect(() => {
     fetchAllTasks().then(
