@@ -23,8 +23,17 @@ describe('500 Error', () => {
 })
 
 describe('Error handling for categories', () => {
+  beforeEach(() => {
+    cy.intercept('GET', `https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/tasks`, {
+      statusCode: 200,
+      fixture: `testData`,
+    }).as('taskFetch');
+    cy.intercept('GET', 'https://bare-minimum-api-53c62eb03bf8.herokuapp.com/api/v1/savedtasks', {
+      statusCode: 200,
+      fixture: 'savedTasks',
+    }).as('getSavedTasks');
+  });
   const categories = ['Exercise', 'Cleaning', 'Organization', 'Work', 'Mental Care', 'Health'];
-
   categories.forEach((category) => {
     it(`Should show Loading error on ${category} page if fetch fails`, () => {
       const categoryURL = (category.charAt(0).toLowerCase() + category.slice(1)).replace(' ', '');
@@ -34,7 +43,8 @@ describe('Error handling for categories', () => {
         headers: { 'content-type': 'application/json' },
       }).as(`failed${categoryURL}request`);
       cy.visit(`localhost:3000/${categoryURL}`)
-      cy.wait(`@failed${categoryURL}request`).get('.task-card').contains('h1', 'Loading...');
+      cy.wait([`@failed${categoryURL}request`, '@taskFetch', '@getSavedTasks'])
+      .get('.task-card').find('.error-message').contains('We apologize! Error: Not Found. Please try again later.');
     });
   });
 });
